@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery-1.4.2.js"></script>
+</head>
+<script src="js/jquery-1.4.2.min.js"></script>
+<body>
+<input type="text">
+<input type="button" value="前面添加">
+<input type="button" value="后面添加">
+<input type="button" value="上海前面">
+<input type="button" value="上海后面">
+<input type="button" value="删除上海">
+<hr>
+<ul>
+    <li>北京</li>
+    <li>上海</li>
+    <li>广州</li>
+</ul>
+</body>
+<script>
+    //前面添加
+    $("input:eq(1)").click(function () {
+        let text=$("input[type='text']").val();
+        let li=$("<li>"+text+"</li>")
+        //or
+        /*
+            let li=$("<li></li>");
+            li.text(text);
+         */
+        $("ul").prepend(li);
+    })
+    //后面添加
+    $("input:eq(2)").click(function () {
+        let text=$("input[type='text']").val();
+        let li=$("<li>"+text+"</li>")
+        //or
+        /*
+            let li=$("<li></li>");
+            li.text(text);
+         */
+        $("ul").append(li);
+    })
+    //上海前面
+    $("input:eq(3)").click(function () {
+        let text=$("input[type='text']").val();
+        let li=$("<li>"+text+"</li>")
+        //or
+        /*
+            let li=$("<li></li>");
+            li.text(text);
+         */
+        $("li:contains('上海')").prepend(li);;
+    })
+    //上海后面
+    $("input:eq(4)").click(function () {
+        let text=$("input[type='text']").val();
+        let li=$("<li>"+text+"</li>")
+        //or
+        /*
+            let li=$("<li></li>");
+            li.text(text);
+         */
+        $("li:contains('上海')").append(li);
+    })
+    //删除上海
+    $("input:eq(5)").click(function () {
+        $("li:contains('上海')").remove();
+    })
+    $("li:last").html("<b>黑龙江</b>");
+    $("li:first").css("color","red");
+    $("li:last").css({"background":"yellow","color":"red"})
+</script>
+</html>

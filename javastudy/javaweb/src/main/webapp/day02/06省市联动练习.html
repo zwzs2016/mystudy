@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<select>
+    <option>请选择</option>
+    <option value="0">河北省</option>
+    <option value="1">山东省</option>
+    <option value="2">北京市</option>
+</select>
+<select>
+    <option>请选择</option>
+</select>
+<script src="./js/jquery-1.4.2.min.js"></script>
+<script>
+    let arr = [["秦皇岛", "唐山", "石家庄"],
+        ["青岛", "菏泽", "烟台"],
+        ["大兴", "朝阳区", "东城区"]];
+    //给第一个下拉选添加值改变事件
+    $("select:first").change(function () {
+        //清空 通过覆盖达到清空的目的
+        $("select:last").html("<option>请选择</option>");
+        //从省数组中得到点击省份对应的市的数组
+        let cities = arr[this.value];
+        //遍历城市数组
+        for(let i=0;i<cities.length;i++){
+            //得到城市名
+            let name = cities[i];
+            //创建option
+            let o = $("<option></option>");
+            o.text(name);//把城市装进option
+            //把option添加到第二个下拉选项里面
+            $("select:last").append(o);
+        }
+    })
+</script>
+</body>
+</html>
