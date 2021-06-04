@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        span{
+            font-size: 3rem;
+        }
+
+    </style>
+</head>
+<body>
+<span>span1</span>
+<span>span2</span>
+<span>span3</span>
+
+<script src="js/jquery-1.4.2.min.js"></script>
+<script>
+    $("span").hover(function () {
+        $(this).css({"color":"red","font-size":"1rem"})
+    },function () {
+        $(this).css({"color":"yellow","font-size":"3rem"})
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            background-image: url("zombies/bg1.jpg");
+            overflow: hidden;
+        }
+        img{
+            position: absolute;
+            width:100px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+<h3 id="f_h3">跑掉数量:0</h3>
+<h3 id="s_h3">干掉数量:0</h3>
+<script src="js/jquery-1.4.2.min.js"></script>
+<script>
+    let w=$(window).width();
+    let h= $(window).height();
+    let fnum=0,snum=0;
+    $("body").css("background-size",w+"px "+h+"px");
+    onresize=function () {
+        w=$(window).width();
+        h= $(window).height();
+        $("body").css("background-size",w+"px "+h+"px");
+    }
+    //开启定时器
+    setInterval(function () {
+        //0-19  20-39   40-59   60...
+        //zomb0 zomb1   2       3
+        let type=parseInt(snum/20);
+        type=type>3?3:type;
+        let zombImg=$("<img src='zombies/zomb"+type+".png'>");
+        let hp=type+1;
+        zombImg.attr("hp",hp);
+
+        //僵尸距离顶部的距离
+        let top=parseInt(Math.random()*(h-50));
+        zombImg.css({"top":top+"px","left":w+"px"});
+        $("body").append(zombImg);
+        //给僵尸添加鼠标移入事件
+        zombImg.mouseover(function () {
+            hp--;
+            zombImg.attr("hp",hp);
+            if(hp<=0){
+                this.remove();
+                snum++;
+                $("#s_h3").text("干掉数量:"+snum);
+            }
+        })
+    },200)
+    //移动僵尸
+    setInterval(function () {
+        //得到所有僵尸图片
+        $("img").each(function () {
+            let left=parseInt($(this).css("left"));
+            left-=1;
+            //把变小的值
+            $(this).css("left",left+"px");
+            if(left<50){
+                $(this).remove();
+                fnum++;
+                $("#f_h3").text("跑掉数量:"+fnum);
+                if(fnum>=10){
+                    setTimeout(function () {
+                        alert("僵尸把你的脑子吃了!");
+                        location.reload();
+                    },50)
+                }
+            }
+        })
+    },10)
+</script>
+</body>
+</html>

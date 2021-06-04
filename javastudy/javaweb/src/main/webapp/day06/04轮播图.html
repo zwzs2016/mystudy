@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            width: 200px;
+            height: 150px;
+            position: relative;
+            overflow: hidden;
+        }
+        img{
+            width: 200px;
+            height: 150px;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <img src="zombies/zomb0.png">
+    <img src="zombies/zomb1.png">
+    <img src="zombies/zomb2.png">
+</div>
+<script src="js/jquery-1.4.2.min.js"></script>
+<script>
+    $("img").each(function (i) {
+        $(this).css("left",i*200+"px");
+    })
+    function change(){
+        let timer =  setInterval(function () {
+            $("img").each(function () {
+                let left=parseInt($(this).css("left"));
+                left-=2;
+                if (left<=-200){
+                    left=400;
+                    clearInterval(timer)
+                }
+                $(this).css("left",left+"px");
+            })
+        })
+    }
+    //开启定时器换图片
+    setInterval(change,3000);
+
+</script>
+</body>
+</html>

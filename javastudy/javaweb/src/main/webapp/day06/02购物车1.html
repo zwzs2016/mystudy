@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<h3>购物车</h3>
+<input type="checkbox" value="5000">华为手机5000</input>
+<input type="checkbox" value="3000">小米电视3000</input>
+<input type="checkbox" value="50">苹果耳机50</input>
+<input type="checkbox" value="200000">特拉斯200000</input>
+<input type="checkbox" id="all" value="0">全选
+<p>总价:0</p>
+<script src="js/jquery-1.4.2.min.js"></script>
+<script>
+    //多选框添加点击事件
+    $("input").click(function () {
+        //全选
+        if (this.id=="all"){
+            let status=$(this).attr("checked");
+            //得到除了，让其全选
+            $(this).siblings("input").attr("checked",status);
+        }
+        let total=0;
+        $(":checked").each(function () {
+            total+=this.value*1;
+        })
+        $("#all").attr("checked",$(":checked:not(#all)").length==4?true:false);
+        $("p").text("总价:"+total);
+    })
+</script>
+</body>
+</html>

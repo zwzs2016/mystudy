@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        img{
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+<script src="js/jquery-1.4.2.min.js"></script>
+<script>
+    setInterval(function () {
+        let img=$("<img src='zombies/zomb1.png'>");
+        let top=parseInt(Math.random()*500);
+        img.css({"width":"20px","poasition":"absolute","top":top+"px"});
+        $("body").append(img);
+        //让图片
+        img.animate({"left":"500px"},1000).fadeOut(1000,function () {
+            this.remove();
+        })
+    },10)
+</script>
+</body>
+</html>
