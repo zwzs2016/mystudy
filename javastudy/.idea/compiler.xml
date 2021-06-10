@@ -6,12 +6,20 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="boot2-3" />
+        <module name="boot2-2" />
+        <module name="boot2-1" />
+        <module name="javaweb" />
+        <module name="boot3-1" />
         <module name="demo2" />
         <module name="demo1" />
-        <module name="javaweb" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="boot2-1" target="1.8" />
+      <module name="boot2-2" target="1.8" />
+      <module name="boot2-3" target="1.8" />
+      <module name="boot3-1" target="1.8" />
       <module name="demo1" target="1.8" />
       <module name="demo2" target="1.8" />
       <module name="javaweb" target="1.5" />
@@ -19,6 +27,10 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="boot2-1" options="-parameters" />
+      <module name="boot2-2" options="-parameters" />
+      <module name="boot2-3" options="-parameters" />
+      <module name="boot3-1" options="-parameters" />
       <module name="demo1" options="-parameters" />
       <module name="demo2" options="-parameters" />
     </option>
