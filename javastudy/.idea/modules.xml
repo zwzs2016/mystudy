@@ -6,6 +6,8 @@
       <module fileurl="file://$PROJECT_DIR$/boot2-2/boot2-2.iml" filepath="$PROJECT_DIR$/boot2-2/boot2-2.iml" />
       <module fileurl="file://$PROJECT_DIR$/boot2-3/boot2-3.iml" filepath="$PROJECT_DIR$/boot2-3/boot2-3.iml" />
       <module fileurl="file://$PROJECT_DIR$/boot3-1/boot3-1.iml" filepath="$PROJECT_DIR$/boot3-1/boot3-1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/boot4-1/boot4-1.iml" filepath="$PROJECT_DIR$/boot4-1/boot4-1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/boot4-2/boot4-2.iml" filepath="$PROJECT_DIR$/boot4-2/boot4-2.iml" />
       <module fileurl="file://$PROJECT_DIR$/demo1/demo1.iml" filepath="$PROJECT_DIR$/demo1/demo1.iml" />
       <module fileurl="file://$PROJECT_DIR$/demo2/demo2.iml" filepath="$PROJECT_DIR$/demo2/demo2.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/javastudy.iml" filepath="$PROJECT_DIR$/.idea/javastudy.iml" />

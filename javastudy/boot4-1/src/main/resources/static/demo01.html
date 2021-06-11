@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>0</h1>
+    <h2>原始数据</h2>
+
+
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        let connt=0;
+        setInterval(function () {
+            connt++;
+            $("h1").text(connt);
+        },1000);
+        setTimeout(function () {
+            //发出异步请求
+            axios.get("/info").then(function (response) {
+                $("h2").text(response.data);
+            })
+        },5000)
+    </script>
+</body>
+</html>

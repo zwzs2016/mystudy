@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h3>注册页面</h3>
+    <form action="/reg">
+        <input type="text" name="username"  placeholder="请输入用户名"><span></span><br>
+        <input type="password" name="password"  placeholder="请输入密码"><br>
+        <input type="submit" value="注册">
+    </form>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        //失去焦点事件，当光标离开文本框触发
+        $("input:first").blur(function () {
+            //通过axios发出异步请求，成功响应触发
+            //catch 当请求失败时触发，err表示错误的对象
+            // axios.get("/check?username="+this.value).then(function (response) {
+            //     // alert("请求成功!");
+            //     $("span").text(response.data);
+            // }).catch(function (err) {
+            //     alert("请求失败!"+err);
+            // })
+
+            //第二种传参方式
+            // axios.get("/check",{
+            //     params:{
+            //         username:this.value
+            //     }
+            // }).then(function (response) {
+            //     $("span").text(response.data);
+            // }).catch(function (err) {
+            //     alert("请求失败!"+err);
+            // })
+            //创建表单数据对象
+            //通过axios发出post请求
+            let data=new FormData($("form")[0]);
+            console.log(data.get("username"));
+            console.log(data.get("password"));
+            axios.post("/check",data).then(function (response) {
+                $("span").text(response.data);
+            }).catch(function (err) {
+                alert(err);
+            })
+        })
+    </script>
+</body>
+</html>
