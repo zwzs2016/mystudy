@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="vm_div">
+        <table border="1">
+            <th>id</th>
+            <th>name</th>
+            <th>sal</th>
+            <th>job</th>
+            <tr v-for="emp in arr">
+                <td v-text="emp.id"></td>
+                <td v-text="emp.name"></td>
+                <td v-text="emp.sal"></td>
+                <td v-text="emp.job"></td>
+            </tr>
+        </table>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+    let vm=new Vue({
+        el:"#vm_div",
+        data:{
+            arr:[
+
+            ]
+        },
+        created(){
+            //
+            axios.get("/select").then(function (response) {
+                vm.arr=response.data;
+            }).catch(function (err) {
+                alert(err);
+            })
+        }
+    })
+</script>
+</html>

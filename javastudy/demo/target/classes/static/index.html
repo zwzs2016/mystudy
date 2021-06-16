@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="vm_div">
+    <span v-text="'欢迎:'+user.nick"></span>
+    <a href="/send.html">发布微博</a>
+    <a href="/mylist.html">微博管理</a>
+    <input type="button" value="退出登录" @click="logout">
+    <hr>
+    <div v-for="weibo in weibos">
+        <span v-text="weibo.author"></span>说:
+        <span v-text="weibo.content"></span>
+        <div>
+<!--            :src设置属性的值-->
+            <img :src="weibo.url" alt="" width="300">
+        </div>
+        <hr>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+    let vm=new Vue({
+        el:"#vm_div",
+        data:{
+            user:{nick:""},
+            weibos:[]
+        },
+        methods:{
+            logout(){
+                if(confirm("您确认退出登录吗？")){
+                    axios.get("/logout").then(function (response) {
+                        //
+                        location.href="/login.html";
+                    }).catch(function (err) {
+                        alert(err)
+                    })
+                }
+            }
+        },
+        created(){
+            //获取当前登录的用户信息
+            axios.get("/currentuser").then(function (response) {
+                if(response.data==null || response.data==''){
+                    alert("请先登录!");
+                    location.href="/login.html";
+                    return;
+                }
+                vm.user=response.data;
+            }).catch(function (err) {
+                alert(err)
+            })
+            //获取所有微博数据
+            axios.get("/select").then(function (response) {
+                vm.weibos=response.data;
+            }).catch(function (err) {
+                alert(err)
+            })
+        }
+    })
+</script>
+</body>
+</html>

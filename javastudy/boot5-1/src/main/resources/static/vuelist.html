@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="vm_div">
+    <table border="1">
+        <tr>
+            <th>id</th>
+            <th>名字</th>
+            <th>工资</th>
+            <th>工作</th>
+            <th>操作</th>
+        </tr>
+        <tr v-for="emp in arr">
+            <td v-text="emp.id"></td>
+            <td><a :href="'/updatevue.html?id='+emp.id" v-text="emp.name"></a></td>
+            <td v-text="emp.sal"></td>
+            <td v-text="emp.job"></td>
+            <td><input type="button" @click="del(emp.id)" value="删除"></td>
+        </tr>
+    </table>
+</div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+    let vm=new Vue({
+        el:"#vm_div",
+        data:{
+            arr:[],
+        },
+        methods:{
+          del(id){
+              axios.get("/delete?id="+id).then(function (response) {
+                  location.reload();//刷新页面
+              }).catch(function (err) {
+                  alert(err);
+              })
+          }
+        },
+        computed:{
+          update: function (id) {
+                return '/updatevue.html?id='+id
+          }
+        },
+        created(){
+            //
+            axios.get("/select").then(function (response) {
+                vm.arr=response.data;
+            }).catch(function (err) {
+                alert(err);
+            })
+        }
+    })
+</script>
+</html>

@@ -6,15 +6,22 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="boot4-1" />
         <module name="boot4-2" />
-        <module name="boot2-3" />
         <module name="boot2-2" />
         <module name="boot2-1" />
-        <module name="javaweb" />
+        <module name="boot2-3" />
+        <module name="boot4-1" />
+        <module name="boot5-1" />
         <module name="boot3-1" />
         <module name="demo2" />
+        <module name="javaweb" />
         <module name="demo1" />
+      </profile>
+      <profile name="Annotation profile for demo" enabled="true">
+        <sourceOutputDir name="../demo/target/generated-sources/annotations" />
+        <sourceTestOutputDir name="../demo/target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="boot6-1" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -24,6 +31,8 @@
       <module name="boot3-1" target="1.8" />
       <module name="boot4-1" target="1.8" />
       <module name="boot4-2" target="1.8" />
+      <module name="boot5-1" target="1.8" />
+      <module name="boot6-1" target="1.8" />
       <module name="demo1" target="1.8" />
       <module name="demo2" target="1.8" />
       <module name="javaweb" target="1.5" />
@@ -37,6 +46,8 @@
       <module name="boot3-1" options="-parameters" />
       <module name="boot4-1" options="-parameters" />
       <module name="boot4-2" options="-parameters" />
+      <module name="boot5-1" options="-parameters" />
+      <module name="boot6-1" options="-parameters" />
       <module name="demo1" options="-parameters" />
       <module name="demo2" options="-parameters" />
     </option>

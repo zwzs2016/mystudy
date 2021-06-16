@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>员工列表</title>
+</head>
+<body>
+    <h3>员工列表页面</h3>
+    <table border="1">
+        <tr>
+            <th>id</th>
+            <th>名字</th>
+            <th>工资</th>
+            <th>工作</th>
+            <th>操作</th>
+        </tr>
+    </table>
+
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        //页面加载完直接发出获取数据的异步请求
+        axios.get("/select").then(function (response) {
+            //会将其自动转换成json
+            let arr = response.data;
+            for (let emp of arr) {
+               let tr=$("<tr></tr>");
+               let idtd=$("<td></td>");
+               let nametd=$("<td><a href='/update.html?id="+emp.id+"'>"+emp.name+"</a></td>");
+               let saltd=$("<td></td>");
+               let jobtd=$("<td></td>");
+               let deltd=$("<td><input type='button' value='删除' empid='"+emp.id+"'></td>");
+               //删除
+               deltd.children().click(function () {
+                    //发出异步请求
+                   axios.get("/delete?id="+emp.id).then(function (response) {
+                        location.reload();//刷新页面
+                   }).catch(function (err) {
+                        alert(err);
+                   })
+               })
+               //给四个td设置显示的内容 内容来自于emp对象
+               idtd.text(emp.id);
+               //nametd.text(emp.name);
+               saltd.text(emp.sal);
+               jobtd.text(emp.job);
+               //把td装进tr
+                tr.append(idtd);
+                tr.append(nametd);
+                tr.append(saltd);
+                tr.append(jobtd);
+                tr.append(deltd);
+                $("table").append(tr);
+            }
+        }).catch(function (err) {
+            alert(err);
+        });
+    </script>
+</body>
+</html>

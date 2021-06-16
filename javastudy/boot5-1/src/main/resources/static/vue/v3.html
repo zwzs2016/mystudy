@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="vm_div">
+    <input type="text" v-model="info">
+    <p v-text="info"></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<script>
+    let vm=new Vue({
+        el:"#vm_div",
+        data:{
+            info:"初始化内容",
+        }
+    })
+</script>
+</body>
+</html>
