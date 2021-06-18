@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @RestController
@@ -18,11 +19,12 @@ public class UserController {
     UserMapper uMapper;
 
     @RequestMapping("/login")
-    public int login(User user, String rem, HttpServletResponse response){
+    public int login(User user, String rem, HttpServletResponse response, HttpSession session){
         System.out.println("user = " + user + ", rem = " + rem + ", response = " + response);
         String password = uMapper.login(user.getUsername());
         if(password!=null){
             if(user.getPassword().equals(password)){
+                session.setAttribute("user",user);
                 if(rem!=null){
                     Cookie c1= new Cookie("username",user.getUsername());
                     Cookie c2= new Cookie("password",user.getPassword());
@@ -36,6 +38,17 @@ public class UserController {
             }
         }
         return 3;//用户名不存在
+    }
+
+    @RequestMapping("/checklogin")
+    public boolean checkLogin(HttpSession session){
+        User user=(User) session.getAttribute("user");
+        return user==null?false:true;
+    }
+
+    @RequestMapping("/logout")
+    public void logout(HttpSession session){
+        session.removeAttribute("user");
     }
 
 }

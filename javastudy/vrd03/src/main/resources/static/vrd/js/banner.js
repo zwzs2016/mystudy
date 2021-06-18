@@ -5,10 +5,7 @@ let vm_banner=new Vue({
         user:{}
     },
     methods:{
-        login(username,pwd){
-            user=
-            axios.post()
-        }
+
     },
     created(){
         axios.get("/selectbanner").then(function (response) {
