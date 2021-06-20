@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<!-- saved from url=(0033)http://www.cppfoto.com/login.aspx -->
+<html><style lang="en" type="text/css" id="night-mode-pro-style">html {background-color: #FFFFFF !important;} body {background-color: #FFFFFF;}</style><link type="text/css" rel="stylesheet" id="night-mode-pro-link"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>登录-诠摄汇</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="./css/user.login.css" rel="stylesheet" type="text/css">
+<script src="./js/jquery.js" type="text/javascript"></script>
+</head>
+<body>
+<div class="content">
+	<p class="logo">
+		<a href="http://www.cppfoto.com/" hidefocus="hidefocus">
+			<img src="./images/login_logo.png">
+		</a>
+	</p>
+	<div class="content-con">
+		<p class="title"><em>中国摄影报</em>唯一官网</p>
+		<form name="form1" method="post" action="http://www.cppfoto.com/login.aspx" id="form1">
+<div>
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUJOTk2MDA3NzM2ZGTcML+Nm1ahDtSgzycV9EU3tsW9t9jucoNn1Xo/aWfUEw==">
+</div>
+
+<div>
+
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEdAAQDZpKkDv5NiWQXGgLG63+1VK7BrRAtEiqu9nGFEI+jBzPSlu16Yx4QbiDU+dddK1OinihG6d/Xh3PZm3b5AoMQ9qU07m1f8Ia6kY9TLmvinRO+YtdGiLF4o7atayx9jXA=">
+</div>
+            <input name="txtUsername" type="text" id="txtUsername" tabindex="1" class="text" autofocus="autofocus" placeholder="用户名/手机/邮箱">
+            <input name="txtPwd" type="password" id="txtPwd" tabindex="2" class="text" placeholder="输入密码">
+			<p class="other clearfix">
+				<label class="fl none"><input type="checkbox" checked="checked"> 自动登录</label>
+				<a class="fr" href="http://www.cppfoto.com/pwdreset.aspx" hidefocus="hidefocus">忘记密码？</a>
+			</p>
+            <input type="submit" name="btnLogin" value="登  录" onclick="return chk();" id="btnLogin" tabindex="3" class="btn">
+		</form>
+	</div>
+	<a class="regist btn" href="http://www.cppfoto.com/register.aspx" hidefocus="hidefocus">免费注册&gt;&gt;</a>
+</div>
+
+<script>
+function chk() {
+    if ($('#txtUsername').val() == '') {
+        alert('\u586b\u5199\u7528\u6237\u540d'); return false;
+    }
+    if ($('#txtPwd').val() == '') {
+        alert('\u586b\u5199\u5bc6\u7801'); return false;
+    }
+    return true;
+}
+</script>
+
+
+
+
+</body></html>

@@ -8,10 +8,10 @@
         <version>2.5.1</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>cn.tripadvisor</groupId>
-    <artifactId>tripadvisor</artifactId>
+    <groupId>cn.cppfoto</groupId>
+    <artifactId>cppfoto</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>tripadvisor</name>
+    <name>cppfoto</name>
     <description>Demo project for Spring Boot</description>
     <properties>
         <java.version>1.8</java.version>
@@ -36,6 +36,10 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
         </dependency>
     </dependencies>
 

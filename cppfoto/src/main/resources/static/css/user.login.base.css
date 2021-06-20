@@ -1,0 +1,62 @@
+
+body,div,h1,h2,h3,h4,h5,h6,dl,dt,dd,ul,ol,li,th,td,p,img,blockquote,pre,form,fieldset,legend,input,button,textarea,hr,span{margin:0;padding:0}
+body{background:#fff;width:100%;height:100%;color:#333;font:12px/1.25 Arial,Helvetica,sans-serif}
+table{border-collapse:collapse;border-spacing:0}
+li,ul,ol,dl,dd,dt{list-style:none}
+em,i{font-style:normal}
+b{font-weight:100}
+fieldset,img{border:0}
+img{vertical-align:top}
+input,button{outline:none}
+select,input{vertical-align:middle}
+a{color:#333;cursor:pointer;text-decoration:none}
+a:hover{color:#bc2102;text-decoration:none}
+.clearfix:after{content:".";display:block;height:0;visibility:hidden;clear:both}
+* html .clearfix{height:1%}
+.clearfix{zoom:1}
+.clear{clear:both;font:0px/0 Arial;visibility:hidden}
+.fl{float:left}
+.fr{float:right}
+.layout{width:1200px;margin:0 auto}
+.none{display:none}
+html,body{height:100%}
+body{background-color:#f8f6f7}
+.footer{position:fixed;bottom:0;left:0;width:100%}
+.footer .bar{color:#939393;height:50px;line-height:50px;font-size:14px;position:relative}
+.footer .bar .bg{position:absolute;left:0;top:0;width:100%;height:50px;background-color:#2e2e2e}
+.footer .bar-left{padding-left:20px}
+.footer .bar .con{position:relative}
+.footer .bar-right{text-align:right;padding-right:10px}
+.footer .bar a{color:#939393;display:inline-block;margin-right:16px}
+.footer .bar a:hover{color:#fff;text-decoration:underline}
+
+
+
+/*弹窗*/
+#pop_overlay {z-index:900; left: 0px; width: 100%; height: 100%; position: fixed; top: 0px;filter: alpha(opacity=50); background-color: #000; -moz-opacity: 0.5; opacity: 0.5;}
+* html #pop_overlay {width: expression(document.body.scrollWidth > document.body.offsetWidth ? document.body.scrollWidth : document.body.offsetWidth + 'px'); position: absolute; height: expression(document.body.scrollHeight > document.body.offsetHeight ? document.body.scrollHeight : document.body.offsetHeight + 'px');}
+* html #pop_window {margin-top: expression(0 - parseInt(this.offsetHeight / 2) + (TBWindowMargin = document.documentElement && document.documentElement.scrollTop || document.body.scrollTop) + 'px'); position: absolute;}
+#pop_window {z-index: 1000; left: 50%; position:fixed; top: 40%; text-align: left;}
+.pop {position:fixed;top:50%;left:50%; margin:-250px 0 0 -400px;width:800px;border:0px solid #EBEBEB;}
+.pop-line {height:40px; line-height:40px; background:#7C6B44; border-bottom:solid 1px #EBEBEB;border-radius:3px 3px 0px 0px;}
+.pop-line a {float:right;width:20px;height:20px;background:url(../images/close.gif?123) center center no-repeat; margin-right:5px;}
+.pop-line h3 {font-size:14px;font-family:"\5fae\8f6f\96c5\9ed1","\5b8b\4f53";text-align:center;color:#FFF; line-height:40px; float:left; padding-left:10px;}
+.pop-btn { display:block;text-align:center;height:50px; line-height:50px;background:#FFF; border-top:solid 1px #F6F6F6; border-radius:0px 0px 3px 3px;}
+.pop-btn input {border:0px; background:#F90D1B; width:220px; height:40px; color:#fff; font-size:14px;font-family:微软雅黑;border-radius:3px; cursor:pointer;}
+.pop-body { display:block;background:#FFF; border:solid 1px #fff; padding-left:10px; padding-right:10px; height:400px; overflow-y:scroll; font-size:14px; line-height:24px;}
+.pop-body h4,.pop-body h5{font-size:14px; font-weight:bold;}
+.pop-body p{ text-indent:2em;}
+.pop-body {
+scrollbar-arrow-color: #f4ae21; /*三角箭头的颜色*/
+scrollbar-face-color: #333; /*立体滚动条的颜色*/
+scrollbar-3dlight-color: #666; /*立体滚动条亮边的颜色*/
+scrollbar-highlight-color: #666; /*滚动条空白部分的颜色*/
+scrollbar-shadow-color: #999; /*立体滚动条阴影的颜色*/
+scrollbar-darkshadow-color: #666; /*立体滚动条强阴影的颜色*/
+scrollbar-track-color: #666; /*立体滚动条背景颜色*/
+scrollbar-base-color:#f8f8f8; /*滚动条的基本颜色*/
+}
+::-webkit-scrollbar{width:15px;height:6px}
+::-webkit-scrollbar-track-piece{background-color:#CCCCCC;-webkit-border-radius:6px}
+::-webkit-scrollbar-thumb:vertical{height:5px;background-color:#999999;-webkit-border-radius:6px}
+::-webkit-scrollbar-thumb:horizontal{width:5px;background-color:#CCCCCC;-webkit-border-radius:6px}

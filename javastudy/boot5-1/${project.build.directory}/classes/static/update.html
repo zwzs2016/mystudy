@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h3>修改员工信息</h3>
+<form action="">
+    <input type="text" name="id" readonly="readonly">
+    <input type="text" name="name">
+    <input type="text" name="sal">
+    <input type="text" name="job">
+    <input type="button" value="修改">
+</form>
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+    let id = location.search.split("=")[1];
+    axios.get("/selectById?id="+id).then(function (response) {
+        let  emp=response.data;
+        $("input:eq(0)").val(emp.id);
+        $("input:eq(1)").val(emp.name);
+        $("input:eq(2)").val(emp.sal);
+        $("input:eq(3)").val(emp.job);
+    }).catch(function (err) {
+        alert(err);
+    })
+    $("input:last").click(function () {
+        let data=new FormData($("form")[0]);
+        axios.post("/update",data).then(function (response) {
+            location.href="/list.html";
+        }).catch(function (err) {
+            alert(err);
+        })
+    })
+</script>
+</body>
+</html>
