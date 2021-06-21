@@ -75,6 +75,7 @@ function dateFmt(value){
     }
 }
 $(function () {
+    let href=location.href;
     axios.get("/islogin").then(function (res) {
         if(res.data){
             let user=res.data;
@@ -88,19 +89,23 @@ $(function () {
             $(".user .hello").prepend("<span>"+user.username+"</span>");
             $(".user-name").html(user.username+userinfo);
         }else {
-            alert('您还未登录!')
-            location.href='/login.html';
+            alert('您还未登录!');
+            location.href='/login.html'
         }
     });
 
-    //获取图片
-    axios.get("/portrait/selectimg").then(function (res) {
-        if(res.data){
-            let img=res.data;
-            $("#portrait").attr('src',img.imgUrl);
-            $(".user-img img").attr('src',img.imgUrl);
-            $(".poartrait img").attr('src',img.imgUrl);
-        }
-    })
+    if(href.indexOf("login.html")==-1 || href.indexOf("register.html")==-1){
+        //获取图片
+        axios.get("/portrait/selectimg").then(function (res) {
+            if(res.data){
+                let img=res.data;
+                $("#portrait").attr('src',img.imgUrl);
+                $(".user-img img").attr('src',img.imgUrl);
+                $(".poartrait img").attr('src',img.imgUrl);
+                $(".dropdown-wrap>a>img").attr('src',img.imgUrl);
+            }
+        })
+    }
+
 
 })

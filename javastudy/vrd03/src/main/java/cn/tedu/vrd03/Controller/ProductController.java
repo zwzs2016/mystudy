@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -53,5 +54,39 @@ public class ProductController {
     @RequestMapping("/selectproduct")
     public List<Product> selectproduct(){
         return pMapper.selectAll();
+    }
+
+    @RequestMapping("/likelist")
+    public List<Product> likeList(){
+       return pMapper.likeList();
+    }
+
+    @RequestMapping("/viewlist")
+    public List<Product> viewList(){
+        return pMapper.viewList();
+    }
+
+    @RequestMapping("/findbycid")
+    public List<Product> findByCid(int id){
+        return pMapper.findByCid(id);
+    }
+
+    @RequestMapping("/findbywd")
+    public List<Product> findByWd(String wd){
+        return pMapper.findByWd(wd);
+    }
+    @RequestMapping("/selectbyid")
+    public Product findById(int id){
+        return pMapper.findByid(id);
+    }
+    @RequestMapping("/likebyid")
+    public int likeById(int id, HttpSession session){
+        String likeId=(String) session.getAttribute("like"+id);
+        if(likeId==null){
+            pMapper.likeById(id);
+            session.setAttribute("like"+id,"like"+id);
+            return 1;//点赞了
+        }
+        return 2;//点过了
     }
 }

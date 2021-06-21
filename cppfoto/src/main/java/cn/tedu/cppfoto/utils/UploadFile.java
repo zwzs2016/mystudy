@@ -15,7 +15,7 @@ import java.util.UUID;
 
 @Component
 public class UploadFile {
-    @Autowired
+    @Autowired(required = false)
     ImagesMapper iMapper;
     public Integer saveImg(MultipartFile file){
         String fileName=file.getOriginalFilename();

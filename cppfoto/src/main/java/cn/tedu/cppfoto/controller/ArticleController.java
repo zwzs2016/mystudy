@@ -1,5 +1,6 @@
 package cn.tedu.cppfoto.controller;
 
+import cn.tedu.cppfoto.Vo.ArticleVo;
 import cn.tedu.cppfoto.entity.Article;
 import cn.tedu.cppfoto.entity.Images;
 import cn.tedu.cppfoto.entity.User;
@@ -13,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
 import java.util.Date;
+import java.util.List;
 
 @RestController
 @RequestMapping("/article")
@@ -23,7 +25,7 @@ public class ArticleController {
     @Autowired
     UploadFile uploadFile;
 
-    @Autowired
+    @Autowired(required = false)
     UserMapper uMapper;
 
     @RequestMapping("/add")
@@ -35,5 +37,18 @@ public class ArticleController {
         article.setUserId(uMapper.checkUserName(user.getUsername()).getId());
         article.setImgesId(imagesId);
         aMapper.insert(article);
+    }
+    @RequestMapping("/infos")
+    public List<ArticleVo> infos(HttpSession session){
+        User user=(User) session.getAttribute("user");
+        System.out.println(user);
+        if(user!=null){
+            return aMapper.selectByUserName(user.getUsername());
+        }
+        return null;
+    }
+    @RequestMapping("/deletebyid")
+    public void deleteById(int id){
+        aMapper.deleteById(id);
     }
 }

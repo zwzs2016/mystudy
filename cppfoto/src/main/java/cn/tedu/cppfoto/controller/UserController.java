@@ -15,9 +15,12 @@ public class UserController {
     UserMapper uMapper;
 
     @RequestMapping("/checkusername")
-    public Integer checkUserName(String username){
+    public int checkUserName(String username){
         System.out.println("username = " + username);
-        return  uMapper.checkUserName(username).getId();
+        if(uMapper.checkUserName(username)!=null){
+            return 1;//存在
+        }
+        return  0;//不存在
     }
 
     @RequestMapping("/reg")

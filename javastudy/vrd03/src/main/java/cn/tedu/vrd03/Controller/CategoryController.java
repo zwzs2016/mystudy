@@ -2,6 +2,7 @@ package cn.tedu.vrd03.Controller;
 
 import cn.tedu.vrd03.entity.Category;
 import cn.tedu.vrd03.mapper.CategoryMapper;
+import org.apache.ibatis.annotations.Select;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,4 +18,6 @@ public class CategoryController {
     public List<Category> selectcategory(){
         return cMapper.selectAll();
     }
+
+
 }
