@@ -1,10 +1,7 @@
 package cn.tedu.vrd03.mapper;
 
 import cn.tedu.vrd03.entity.Product;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -33,4 +30,10 @@ public interface ProductMapper {
 
     @Update("update product set likeCount=likeCount+1 where id=#{id}")
     void likeById(int id);
+
+    @Update("update product set viewCount=viewCount+1;")
+    void viewById(int id);
+
+    @Delete("delete from product where id=#{id}")
+    void deleteById(int id);
 }

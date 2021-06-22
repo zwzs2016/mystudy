@@ -15,6 +15,16 @@ let vm_detail=new Vue({
                     }
                     
                 })
+            },
+            deleteById(id){
+                if(confirm('您确定删除吗?')){
+                    axios.get("/deletebyid?id="+id).then(function (response) {
+                        if(response.status=200){
+                            alert('删除成功!');
+                            location.href='home.html';
+                        }
+                    })
+                }
             }
         },
         created(){

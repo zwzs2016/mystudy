@@ -1,6 +1,7 @@
 package cn.tedu.cppfoto.controller;
 
 import cn.tedu.cppfoto.Vo.ArticleVo;
+import cn.tedu.cppfoto.Vo.InfoVo;
 import cn.tedu.cppfoto.entity.Article;
 import cn.tedu.cppfoto.entity.Images;
 import cn.tedu.cppfoto.entity.User;
@@ -28,6 +29,11 @@ public class ArticleController {
     @Autowired(required = false)
     UserMapper uMapper;
 
+    @RequestMapping
+    public List<Article> Article(){
+        return aMapper.selctAll();
+    }
+
     @RequestMapping("/add")
     public void add(Article article, MultipartFile file, HttpSession session){
         System.out.println("article = " + article + ", file = " + file + ", session = " + session);
@@ -35,7 +41,7 @@ public class ArticleController {
         Integer imagesId = uploadFile.saveImg(file);
         article.setCreateDate(new Date());
         article.setUserId(uMapper.checkUserName(user.getUsername()).getId());
-        article.setImgesId(imagesId);
+        article.setImgesNum(1);
         aMapper.insert(article);
     }
     @RequestMapping("/infos")
@@ -50,5 +56,10 @@ public class ArticleController {
     @RequestMapping("/deletebyid")
     public void deleteById(int id){
         aMapper.deleteById(id);
+    }
+
+    @RequestMapping("/info")
+    public List<InfoVo> info(){
+       return aMapper.selctInfoAll();
     }
 }

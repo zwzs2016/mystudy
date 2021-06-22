@@ -4,6 +4,7 @@ import cn.tedu.cppfoto.entity.Images;
 import cn.tedu.cppfoto.entity.User;
 import cn.tedu.cppfoto.mapper.ImagesMapper;
 import cn.tedu.cppfoto.mapper.UserMapper;
+import cn.tedu.cppfoto.utils.UploadFile;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,8 +21,10 @@ import java.util.UUID;
 public class ImagesController {
     @Autowired(required = false)
     ImagesMapper iMapper;
-    @Autowired
+    @Autowired(required = false)
     UserMapper uMapper;
+    @Autowired
+    UploadFile uploadFile;
 
     @RequestMapping("/portrait")
     public void portrait(MultipartFile file){
@@ -54,10 +57,20 @@ public class ImagesController {
         User user=(User)session.getAttribute("user");
         System.out.println("username"+user.getUsername());
         if(user!=null){
-            Images images=iMapper.selectById(user.getUsername());
+            System.out.println(user);
+            Images images=iMapper.selectById(user.getId());
             return images;
         }
         return null;
     }
 
+    @RequestMapping("/images/selectbyuserid")
+    public Images selectByUserId(int id){
+        return iMapper.selectByUserId(id);
+    }
+
+    @RequestMapping("/selectbyarticleid")
+    public Images selectByArticleId(int id){
+        return iMapper.selectByArticleId(id);
+    }
 }

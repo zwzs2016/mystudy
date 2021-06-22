@@ -6,5 +6,5 @@ import lombok.Data;
 public class Images {
     private Integer id;
     private String imgUrl;
-    private Integer categoryId;//分类id
+    private Integer articleId;//分类id
 }

@@ -12,7 +12,7 @@ public class Article {
     private Date createDate;
     private Integer likeCount;
     private Integer categoryId;
-    private Integer imgesId;
+    private Integer imgesNum;
     private Integer userId;
     private Integer source;
     private String status;

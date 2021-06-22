@@ -36,10 +36,11 @@ public class UserController {
     @RequestMapping("/login")
     public int login(User user, HttpSession session){
         User u=uMapper.checkUserName(user.getUsername());
+        System.out.println("user="+u);
         if (u!=null){
             if(u.getPassword().equals(user.getPassword())){
                 //密码一致
-                session.setAttribute("user",user);
+                session.setAttribute("user",u);
                 return 1;
             }else {
                 return 2;//密码错误

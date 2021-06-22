@@ -3,6 +3,7 @@ package cn.tedu.vrd03.Controller;
 import cn.tedu.vrd03.entity.Product;
 import cn.tedu.vrd03.mapper.ProductMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
@@ -20,6 +21,9 @@ public class ProductController {
     @Autowired(required = false)
     ProductMapper pMapper;
 
+    @Value("${imageDirPath}")
+    private String imageDirPath;
+
     @RequestMapping("/send")
     public void send(Product product, MultipartFile file){
         System.out.println("product = " + product + ", file = " + file);
@@ -35,13 +39,14 @@ public class ProductController {
         //得到日期路径
         String datePath=f.format(date);
         System.out.println("日期路径:"+datePath);
-        String path="D:/down/upload"+datePath;
+        String path=imageDirPath+datePath;
         //创建表示文件夹的文件对象
         File dirFile=new File(path);
         if(!dirFile.exists()){
             dirFile.mkdirs();//表示连续创建多个文件夹
         }
         try {
+            System.out.println(path+fileName);
             file.transferTo(new File(path+fileName));
         } catch (IOException e) {
             e.printStackTrace();
@@ -77,6 +82,8 @@ public class ProductController {
     }
     @RequestMapping("/selectbyid")
     public Product findById(int id){
+        //让浏览+1
+        pMapper.viewById(id);
         return pMapper.findByid(id);
     }
     @RequestMapping("/likebyid")
@@ -88,5 +95,13 @@ public class ProductController {
             return 1;//点赞了
         }
         return 2;//点过了
+    }
+    @RequestMapping("/deletebyid")
+    public void deleteById(int id){
+        Product p=pMapper.findByid(id);
+        //得到文件的完整路径
+        String filePath=imageDirPath+p.getUrl();
+        new File(filePath).delete();
+        pMapper.deleteById(id);
     }
 }

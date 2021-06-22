@@ -90,9 +90,6 @@
     .grid-item{
       overflow: hidden;
     }
-    #vm_detail{
-      color: #ffc600;
-    }
   </style>
 </head>
 <body>
@@ -112,8 +109,11 @@
 <!--            <li v-for="c in categories"><a href="#" v-text="c.name" @click="findById(c.id)"></a></li>-->
             <li v-for="c in categories"><a :href="'home.html?cid='+c.id" v-text="c.name"></a></li>
             <li>
-              <form action="">
-                <input type="text" placeholder="Search" v-model="wd">
+<!--              文本框敲回车自动提交-->
+<!--              form表单的提交事件是提交事件-->
+<!--              事件添加prevent阻止事件触发-->
+              <form action="" @submit.prevent>
+                <input type="text" placeholder="Search" v-model="wd" @keyup.enter="search(wd)">
                 <button>
                   <a :href="'home.html?wd='+wd" class="fa fa-search"></a>
                 </button>
@@ -123,7 +123,7 @@
           <!--右侧内容-->
           <ul class="nav navbar-nav navbar-right">
             <li ><a class="fa fa-user-circle" href="send.html">发布作品</a></li>
-            <li v-if="!isLogin"><a class="fa fa-user-circle" href="banner.html">轮播图</a></li>
+            <li v-if="isLogin"><a class="fa fa-user-circle" href="banner.html">轮播图</a></li>
             <li v-if="!isLogin"><a id="login_a" class="fa fa-user-circle" href="login.html">管理员入口</a></li>
             <li v-if="isLogin"><a id="logout_a" class="fa fa-user-circle" href="#" @click="logout">登出</a></li>
           </ul>
@@ -133,39 +133,70 @@
     </header>
   </div>
   <section class="container">
-
-    <!--主体区域开始-->
-    <div class="row">
-<!--      //Vue关了的元素不能呢个嵌套，否则失效-->
-<!--      作品详情-->
-      <div id="vm_detail" class="col-md-9">
-          <h2 v-text="product.title" class="page-header"></h2>
-          <div>
-            <span v-text="product.author"></span>
-            <span v-text="product.created"></span>
-<!--            //相当于css中的float:right-->
-            <span class="pull-right">
-              <span v-text="product.viewCount" class="fa fa-eye"></span>
-              <span v-text="product.likeCount" class="fa fa-thumbs-o-up"></span>
-            </span>
+    <!--轮播图开始-->
+      <div id="myCarousel" class="carousel slide">
+        <!-- 轮播（Carousel）指标 -->
+        <ol class="carousel-indicators">
+          <li v-for="(b,i) in banner_arr" data-target="#myCarousel" :data-slide-to="i" :class="i==0?'active':''"></li>
+        </ol>
+        <!-- 轮播（Carousel）项目 -->
+        <div class="carousel-inner">
+          <div class="item" :class="i==0?'active':''" v-for="(b,i) in banner_arr">
+            <img :src="b.url" alt="Third slide" class="">
+            <div class="carousel-caption"></div>
           </div>
-<!--          居中显示-->
-          <div class="text-center">
-              <button class="btn btn-info" @click="likeById(product.id)">给作品点赞</button>
-              <button v-if="isLogin" class="btn btn-danger" @click="deleteById(product.id)">删除作品</button>
-          </div>
-          <img :src="product.url" alt="" class="img-responsive center-block">
-          <p class="text-center" v-text="product.intro"></p>
+<!--                  <div class="item active">-->
+<!--                    <img src="images/banner0.jpg" alt="First slide">-->
+<!--                    <div class="carousel-caption"></div>-->
+<!--                  </div>-->
+<!--                  <div class="item">-->
+<!--                    <img src="images/banner1.jpg" alt="Second slide">-->
+<!--                    <div class="carousel-caption"></div>-->
+<!--                  </div>-->
+<!--                  <div class="item">-->
+<!--                    <img src="images/banner2.jpg" alt="Third slide">-->
+<!--                    <div class="carousel-caption"></div>-->
+<!--                  </div>-->
+        </div>
+        <!-- 轮播（Carousel）导航 -->
+        <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+          <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+          <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
       </div>
-      <div  id="vm_product" class="col-md-3">
+
+    <!--轮播图结束-->
+    <!--主体区域开始-->
+    <div id="vm_product" class="row">
+      <div class="col-md-9">
+        <!--瀑布流开始-->
+        <div class="grid">
+          <div v-for="p in product_arr" class="grid-item">
+            <a :href="'detail.html?id='+p.id">
+            <img :src="p.url" class="img-responsive" alt="">
+            </a>
+<!--            蓝条开始-->
+            <div class="floatView">
+              <p v-text="p.title"></p>
+              <span class="fa fa-eye" v-text="p.viewCount"></span>
+              <span class="fa fa-thumbs-o-up" v-text="p.likeCount"></span>
+            </div>
+<!--            蓝条结束-->
+          </div>
+        </div>
+        <!--瀑布流结束-->
+      </div>
+      <div class="col-md-3">
         <!--浏览最多开始-->
         <ul class="list-group">
           <li class="list-group-item list-head">
             <h4>
               <i class="fa fa-eye">浏览最多</i>
             </h4>
-<!--            让元素居中-->
-
           </li>
           <li class="list-group-item" v-for="p in view_arr">
             <!-- 左对齐 -->
@@ -236,12 +267,9 @@
 <script src="js/header.js"></script>
 <script src="js/banner.js"></script>
 <script src="js/product.js"></script>
-<script src="js/detail.js"></script>
-//moment框架用于处理时间格式
-<script src="http://cdn.staticfile.org/moment.js/2.24.0/moment.js"></script>
 <script>
   //让轮播图 自动播放
-  // $("#myCarousel").carousel("cycle");
+  $("#myCarousel").carousel("cycle");
 
   // axios.get("/cookie").then(function (response) {
   //     alert(response.data);
@@ -251,5 +279,4 @@
 
 
 </script>
-<script src="js/detail.js"></script>
 </html>
