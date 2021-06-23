@@ -2,28 +2,17 @@ let vm_info=new Vue({
         el:"#content",
         data:{
             article_arr:[],
+            category_arr:[],
             articleimgurl:'',
-            userimgurl:''
+            userimgurl:'',
         },
         methods:{
-           async getArticleImgUrl(id){
-                let url='';
-                await axios.get("/selectbyarticleid?id="+id).then(function (response) {
+            listbycid(id){
+                axios.get("/article/info?category="+id).then(function (response) {
                     if(response.data){
-                        url=response.data.imgUrl;
-                        return url;
+                        vm_info.article_arr=response.data;
                     }
                 })
-                return data;
-            },
-            getUserImgUrl(id){
-                let url='';
-                axios.get("/selectbyuserid?id="+id).then(function (response) {
-                    if(response.data){
-                        url=response.data.imgUrl;
-                    }
-                })
-                return url;
             }
         },
         created(){
@@ -31,9 +20,38 @@ let vm_info=new Vue({
                 if (response.data){
                     vm_info.article_arr=response.data;
                 }
-           })
+           });
+
+           //获取首页分类
+            axios.get("/category").then(function (response) {
+                if (response.data){
+                    vm_info.category_arr=response.data;
+                }
+            })
         },
         updated() {
-
+            $(".cont_wrap").imagesLoaded().progress(function () {
+                // $(".grid").masonry("layout");//让瀑布流框架重新计算元素位置
+                //瀑布流初始化代码
+                if ($(window).width() < 1260) {
+                    $('.cont_wrap').width(1008);
+                } else {
+                    $('.cont_wrap').width(1260);
+                }
+                $(".cont_wrap").masonry({
+                    singleMode: true,
+                    animate: true,
+                    resizeable: true,
+                    itemSelector: '.grid-item'
+                });
+                setInterval(function () {
+                    $(".cont_wrap").masonry({
+                        singleMode: true,
+                        animate: true,
+                        resizeable: true,
+                        itemSelector: '.grid-item'
+                    });
+                }, 1000);
+            });
         }
 })

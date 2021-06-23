@@ -1,5 +1,6 @@
 package cn.tedu.cppfoto.utils;
 
+import cn.tedu.cppfoto.entity.Article;
 import cn.tedu.cppfoto.entity.Images;
 import cn.tedu.cppfoto.entity.User;
 import cn.tedu.cppfoto.mapper.ImagesMapper;
@@ -17,7 +18,7 @@ import java.util.UUID;
 public class UploadFile {
     @Autowired(required = false)
     ImagesMapper iMapper;
-    public Integer saveImg(MultipartFile file){
+    public Integer saveImg(MultipartFile file, Article article){
         String fileName=file.getOriginalFilename();
         String suffix=fileName.substring(fileName.lastIndexOf("."));
         fileName= UUID.randomUUID()+suffix;
@@ -36,6 +37,7 @@ public class UploadFile {
         }
         Images images = new Images();
         images.setImgUrl("/"+datePath+fileName);
+        images.setArticleId(article.getId());
         iMapper.insert(images);
         return images.getId();
     }

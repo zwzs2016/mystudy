@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -35,21 +36,24 @@ public class ArticleController {
     }
 
     @RequestMapping("/add")
-    public void add(Article article, MultipartFile file, HttpSession session){
-        System.out.println("article = " + article + ", file = " + file + ", session = " + session);
+    public void add(Article article, MultipartFile file, MultipartFile[] files, HttpSession session){
+        System.out.println("article = " + article + ", file = " + file + ", files = " + Arrays.deepToString(files) + ", session = " + session);
         User user=(User) session.getAttribute("user");
-        Integer imagesId = uploadFile.saveImg(file);
         article.setCreateDate(new Date());
-        article.setUserId(uMapper.checkUserName(user.getUsername()).getId());
-        article.setImgesNum(1);
+        article.setUserId(user.getId());
+        article.setImagesNum(files.length);
         aMapper.insert(article);
+        System.out.println(article);
+        for (int i=0;i<files.length;i++){
+            uploadFile.saveImg(files[i],article);
+        }
     }
     @RequestMapping("/infos")
     public List<ArticleVo> infos(HttpSession session){
         User user=(User) session.getAttribute("user");
         System.out.println(user);
         if(user!=null){
-            return aMapper.selectByUserName(user.getUsername());
+            return aMapper.selectById(user.getId());
         }
         return null;
     }
@@ -59,7 +63,7 @@ public class ArticleController {
     }
 
     @RequestMapping("/info")
-    public List<InfoVo> info(){
-       return aMapper.selctInfoAll();
+    public List<InfoVo> info(Integer id){
+       return aMapper.selctInfoAll(id);
     }
 }

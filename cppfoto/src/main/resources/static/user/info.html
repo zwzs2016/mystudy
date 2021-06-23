@@ -267,7 +267,11 @@ var _hmt = _hmt || [];
 	$(function () {
 		$(".list-one input:last").click(function () {
 			let data=new FormData($("form")[0]);
+			let files=$("input[type='file']")[0].files;
 			data.append('categoryId',categoryId);
+			for (let i=0;i<files.length;i++){
+				data.append('files',files[i]);
+			}
 			axios.post("/article/add",data).then(function (res) {
 				if(res.status==200){
 					alert('已提交待审核');

@@ -10,9 +10,10 @@ public class Article {
     private String title;
     private String content;
     private Date createDate;
-    private Integer likeCount;
+    private int likeCount;
+    private int collectionNum;
     private Integer categoryId;
-    private Integer imgesNum;
+    private Integer imagesNum;
     private Integer userId;
     private Integer source;
     private String status;

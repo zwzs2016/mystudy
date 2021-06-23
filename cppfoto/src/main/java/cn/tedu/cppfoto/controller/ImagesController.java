@@ -55,7 +55,6 @@ public class ImagesController {
     @RequestMapping("/portrait/selectimg")
     public Images selectimg(HttpSession session){
         User user=(User)session.getAttribute("user");
-        System.out.println("username"+user.getUsername());
         if(user!=null){
             System.out.println(user);
             Images images=iMapper.selectById(user.getId());

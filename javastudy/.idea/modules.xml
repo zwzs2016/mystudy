@@ -16,6 +16,7 @@
       <module fileurl="file://$PROJECT_DIR$/demo2/demo2.iml" filepath="$PROJECT_DIR$/demo2/demo2.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/javastudy.iml" filepath="$PROJECT_DIR$/.idea/javastudy.iml" />
       <module fileurl="file://$PROJECT_DIR$/javaweb/javaweb.iml" filepath="$PROJECT_DIR$/javaweb/javaweb.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springcloudtest/springcloudtest.iml" filepath="$PROJECT_DIR$/springcloudtest/springcloudtest.iml" />
       <module fileurl="file://$PROJECT_DIR$/vrd03/vrd03.iml" filepath="$PROJECT_DIR$/vrd03/vrd03.iml" />
     </modules>
   </component>

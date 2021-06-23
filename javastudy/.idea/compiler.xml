@@ -11,16 +11,17 @@
         <module name="boot2-3" />
         <module name="boot2-2" />
         <module name="boot2-1" />
-        <module name="boot4-2" />
-        <module name="boot4-1" />
-        <module name="boot5-1" />
-        <module name="boot6-1" />
         <module name="boot3-1" />
         <module name="demo" />
+        <module name="boot5-1" />
+        <module name="boot6-1" />
         <module name="javaweb" />
+        <module name="springcloudtest" />
         <module name="vrd03" />
         <module name="demo2" />
         <module name="demo1" />
+        <module name="boot4-1" />
+        <module name="boot4-2" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="8">
@@ -37,6 +38,7 @@
       <module name="demo1" target="1.8" />
       <module name="demo2" target="1.8" />
       <module name="javaweb" target="1.5" />
+      <module name="springcloudtest" target="1.8" />
       <module name="vrd03" target="1.8" />
     </bytecodeTargetLevel>
   </component>
@@ -54,6 +56,7 @@
       <module name="demo" options="-parameters" />
       <module name="demo1" options="-parameters" />
       <module name="demo2" options="-parameters" />
+      <module name="springcloudtest" options="-parameters" />
       <module name="vrd03" options="-parameters" />
     </option>
   </component>
