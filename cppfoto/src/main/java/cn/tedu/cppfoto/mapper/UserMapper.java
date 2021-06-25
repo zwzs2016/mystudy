@@ -18,4 +18,6 @@ public interface UserMapper{
 
     void update(User user);
 
+    @Select("select * from user where id=#{id}")
+    User selectById(int id);
 }

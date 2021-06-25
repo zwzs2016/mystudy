@@ -2,6 +2,7 @@ package cn.tedu.cppfoto.mapper;
 
 import cn.tedu.cppfoto.Vo.ArticleVo;
 import cn.tedu.cppfoto.Vo.InfoVo;
+import cn.tedu.cppfoto.beans.Info;
 import cn.tedu.cppfoto.entity.Article;
 import org.apache.ibatis.annotations.*;
 
@@ -14,7 +15,7 @@ public interface ArticleMapper {
     void insert(Article article);
 
     @Select("SELECT a.*,i.imgurl from article a JOIN images i on a.id=i.articleId  WHERE a.userId=#{id} GROUP BY a.id")
-    List<ArticleVo> selectById(int Id);
+    List<ArticleVo> selectById(int id);
 
     @Delete("delete from article where id=#{id}")
     void deleteById(int id);
@@ -22,5 +23,14 @@ public interface ArticleMapper {
     @Select("select * from article")
     List<Article> selctAll();
 
-    List<InfoVo> selctInfoAll(Integer categoryId);
+    List<InfoVo> selctInfoAll(Info info);
+
+    @Select("select * from article where id=#{id}")
+    Article select(int id);
+
+    @Update("update article set likeCount=likeCount+1  where id=#{id}")
+    void heart(int id);
+
+    @Update("update article set collectionNum=collectionNum+1 where id=#{id}")
+    void favorite(int id);
 }

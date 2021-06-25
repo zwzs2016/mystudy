@@ -2,12 +2,14 @@ package cn.tedu.cppfoto.controller;
 
 import cn.tedu.cppfoto.Vo.ArticleVo;
 import cn.tedu.cppfoto.Vo.InfoVo;
+import cn.tedu.cppfoto.beans.Info;
 import cn.tedu.cppfoto.entity.Article;
 import cn.tedu.cppfoto.entity.Images;
 import cn.tedu.cppfoto.entity.User;
 import cn.tedu.cppfoto.mapper.ArticleMapper;
 import cn.tedu.cppfoto.mapper.UserMapper;
 import cn.tedu.cppfoto.utils.UploadFile;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -29,6 +31,9 @@ public class ArticleController {
 
     @Autowired(required = false)
     UserMapper uMapper;
+
+    @Autowired
+    Info info;
 
     @RequestMapping
     public List<Article> Article(){
@@ -63,7 +68,26 @@ public class ArticleController {
     }
 
     @RequestMapping("/info")
-    public List<InfoVo> info(Integer id){
-       return aMapper.selctInfoAll(id);
+    public List<InfoVo> info(Integer categoryId,String searchText,String searchUser){
+        System.out.println("categoryId = " + categoryId + ", searchText = " + searchText + ", searchUser = " + searchUser);
+        info.setCategoryId(categoryId);
+        info.setSearchText(searchText);
+        info.setSearchUser(searchUser);
+       return aMapper.selctInfoAll(info);
     }
+
+    @RequestMapping("/detail")
+    public Article selectById(int id){
+        return aMapper.select(id);
+    }
+    @RequestMapping("/heart")
+    public int heart(int id,HttpSession session){
+        if(session.getAttribute("heart")==null){
+            session.setAttribute("heart","heart");
+            aMapper.heart(id);
+            return 1;
+        }
+        return 0;
+    }
+
 }

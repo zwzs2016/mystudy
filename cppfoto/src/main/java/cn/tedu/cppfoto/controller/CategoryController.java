@@ -16,6 +16,7 @@ public class CategoryController {
 
     @RequestMapping
     public List<Category> category(String directory){
+        System.out.println("directory = " + directory);
         return cMapper.select(directory);
     }
 }

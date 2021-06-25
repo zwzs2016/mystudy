@@ -87,7 +87,7 @@
     </div>
 </div>
 
-	<div class="con-main fr" style="min-height: 460px;">
+	<div class="con-main fr" style="min-height: 460px;" id="words">
         <p class="leadpage clearfix"><b>我的评论</b></p>
 		<div class="my-comments my-article">
 			<table width="100%" border="0" cellpadding="0" cellspacing="0">
@@ -99,17 +99,20 @@
 					</tr>
                 </thead>
                 <tbody>
-<!--                    <tr>-->
-<!--						<td class="con-1">-->
-<!--                            <span><a href="/info/detail.html?id=508477" target="_blank" hidefocus="hidefocus"><img src="./info_files/8bad0c26b2694ec6bf306339291e31e8_ls.jpg" class="info-img"></a>-->
-<!--                            <em><div>hao</div></em>-->
-<!--                            </span>-->
-<!--                        </td>-->
-<!--						<td class="con-2"><span>2021/6/18 22:37:15</span></td>-->
-<!--						<td class="con-4">-->
-<!--							<a class="gray" href="javascript:;" onclick="return false;" hidefocus="hidefocus">系统审核</a>-->
-<!--						</td>-->
-<!--					</tr>-->
+                    <tr v-for="words in words_arr">
+						<td class="con-1">
+                            <span><a :href="'/info/detail.html?id='+words.articleId" target="_blank" hidefocus="hidefocus">
+								<img :src="words.imgUrl" class="info-img"></a>
+                            <em>
+								<div v-text="words.contents"></div>
+							</em>
+                            </span>
+                        </td>
+						<td class="con-2"><span v-text="words.createDate"></span></td>
+						<td class="con-4">
+							<a class="gray" href="javascript:;" onclick="return false;" hidefocus="hidefocus">系统审核</a>
+						</td>
+					</tr>
                 </tbody>
 			</table>
             
@@ -190,6 +193,9 @@ var _hmt = _hmt || [];
 })();
 </script>
 <script>_usercenter(1, 2);</script>
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src="/js/comm.js"></script>
+<script src="/js/vue/infocomments.js"></script>
 
 <div id="hm_t_undefined" class="hm-t-container"><div class="hm-t-go-top" style="display: none;"></div></div></body></html>

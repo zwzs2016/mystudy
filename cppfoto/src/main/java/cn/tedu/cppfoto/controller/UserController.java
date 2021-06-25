@@ -73,4 +73,9 @@ public class UserController {
         System.out.println("user = " + user);
         uMapper.update(user);
     }
+
+    @RequestMapping("/selectuserbyid")
+    public User selectUserById(int id){
+        return uMapper.selectById(id);
+    }
 }

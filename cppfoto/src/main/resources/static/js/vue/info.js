@@ -11,7 +11,7 @@ let vm_info=new Vue({
         }
     },
     created() {
-        axios.get("/category?directory='嘚瑟一下'").then(function (response) {
+        axios.get("/category?directory=嘚瑟一下").then(function (response) {
             if (response.data){
                 vm_info.label_arr=response.data;
             }

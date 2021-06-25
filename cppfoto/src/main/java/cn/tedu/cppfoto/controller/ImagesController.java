@@ -15,6 +15,7 @@ import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -69,7 +70,7 @@ public class ImagesController {
     }
 
     @RequestMapping("/selectbyarticleid")
-    public Images selectByArticleId(int id){
+    public List<Images> selectByArticleId(int id){
         return iMapper.selectByArticleId(id);
     }
 }

@@ -21,7 +21,6 @@ let vm_infos=new Vue({
                     vm_infos.article_arr=response.data;
                     vm_infos.isarticle=false;
                 }else {
-                    alert('您还未登录!');
                     location.href='/login.html';
                 }
             })

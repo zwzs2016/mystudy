@@ -11,7 +11,7 @@
  Target Server Version : 50624
  File Encoding         : 65001
 
- Date: 21/06/2021 20:34:09
+ Date: 25/06/2021 20:31:45
 */
 
 SET NAMES utf8mb4;
@@ -26,7 +26,7 @@ CREATE TABLE `category`  (
   `name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `directory` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 15 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 16 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of category
@@ -45,5 +45,6 @@ INSERT INTO `category` VALUES (11, '说说', '嘚瑟一下');
 INSERT INTO `category` VALUES (12, '嘚瑟', '嘚瑟一下');
 INSERT INTO `category` VALUES (13, '吃货', '嘚瑟一下');
 INSERT INTO `category` VALUES (14, '花儿', '嘚瑟一下');
+INSERT INTO `category` VALUES (15, '手机微距', '圈子');
 
 SET FOREIGN_KEY_CHECKS = 1;

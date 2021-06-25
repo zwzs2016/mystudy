@@ -89,8 +89,8 @@ $(function () {
             $(".user .hello").prepend("<span>"+user.username+"</span>");
             $(".user-name").html(user.username+userinfo);
         }else {
-            alert('您还未登录!');
-            location.href='/login.html'
+            // alert('您还未登录!');
+            // location.href='/login.html'
         }
     });
 
@@ -106,6 +106,4 @@ $(function () {
             }
         })
     }
-
-
 })

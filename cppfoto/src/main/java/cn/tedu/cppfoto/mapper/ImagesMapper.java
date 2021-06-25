@@ -6,6 +6,8 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Select;
 
+import java.util.List;
+
 @Mapper
 public interface ImagesMapper {
 
@@ -19,6 +21,6 @@ public interface ImagesMapper {
     @Select("select * from images where id=(select imagesId from user where id=#{id})")
     Images selectByUserId(int id);
 
-    @Select("select id,imgurl,articleId from images where articleId=#{id} limit 1")
-    Images selectByArticleId(int id);
+    @Select("select id,imgurl,articleId from images where articleId=#{id}")
+    List<Images> selectByArticleId(int id);
 }

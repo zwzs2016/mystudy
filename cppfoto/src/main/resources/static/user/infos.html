@@ -105,7 +105,7 @@
 					<tr v-for="a in article_arr">
 						<td>
 							<img :src="a.imgurl" alt="" width="20px" height="20px" />
-							<a v-text="a.title" :href="'/info/detail.html?id='+a.id"></a>
+							<a v-text="a.title" :href="'/detail.html?id='+a.id"></a>
 						</td>
 						<td v-text="a.createDate"></td>
 						<td v-text="a.status==null?'审核':'通过'"></td>

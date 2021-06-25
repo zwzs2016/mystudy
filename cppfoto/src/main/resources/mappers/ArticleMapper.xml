@@ -5,10 +5,19 @@
     <select id="selctInfoAll" resultType="cn.tedu.cppfoto.Vo.InfoVo">
         SELECT s.id,s.title,s.likeCount,s.collectionNum,s.imagesNum,s.articleImgUrl,b.userimgurl FROM (SELECT a.userId,a.id,a.title,a.likeCount,a.collectionNum,a.imagesNum,i.imgurl as articleImgUrl FROM `article` a left JOIN `images` i on a.id=i.articleId
         <where>
-         <if test="categoryId!=null">
-         and a.categoryId=#{categoryId}
-         </if>
+            <if test="categoryId!=null">
+                and a.categoryId=#{categoryId}
+            </if>
         </where>
-         GROUP BY a.id) s left JOIN (select u.id,i.imgurl as userImgUrl from user u JOIN images i on u.imagesId=i.id) b on s.userId=b.id;
+        GROUP BY a.id
+        ) s left JOIN (select u.id,i.imgurl as userImgUrl from user u JOIN images i on u.imagesId=i.id) b on s.userId=b.id
+        <where>
+            <if test="searchText!=null">
+                and s.title like concat('%',#{searchText},'%')
+            </if>
+            <if test="searchUser!=null">
+                and b.id in (SELECT id FROM user WHERE username like concat('%',#{searchUser},'%'))
+            </if>
+        </where>
     </select>
 </mapper>
