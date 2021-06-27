@@ -6,9 +6,6 @@ let vm_info=new Vue({
         categoryId:0
     },
     methods:{
-        submit(){
-
-        }
     },
     created() {
         axios.get("/category?directory=嘚瑟一下").then(function (response) {
@@ -17,13 +14,14 @@ let vm_info=new Vue({
             }
         })
     },
+    methods:{
+    },
     updated(){
         $(".list-one .form-con a").click(function () {
             vm_info.categoryId=$(this).attr('value');
             categoryId=vm_info.categoryId;
             $(this).css({background: '#f00',border: 'solid 1px #f00',color: '#fff'});
             $("#hfCategory").val(vm_info.categoryId);
-
         })
-    }
+    },
 })

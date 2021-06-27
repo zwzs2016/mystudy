@@ -11,6 +11,7 @@ import cn.tedu.cppfoto.mapper.UserMapper;
 import cn.tedu.cppfoto.utils.UploadFile;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
@@ -68,12 +69,9 @@ public class ArticleController {
     }
 
     @RequestMapping("/info")
-    public List<InfoVo> info(Integer categoryId,String searchText,String searchUser){
-        System.out.println("categoryId = " + categoryId + ", searchText = " + searchText + ", searchUser = " + searchUser);
-        info.setCategoryId(categoryId);
-        info.setSearchText(searchText);
-        info.setSearchUser(searchUser);
-       return aMapper.selctInfoAll(info);
+    public List<InfoVo> info(Info info){
+        System.out.println("info = " + info);
+        return aMapper.selctInfoAll(info);
     }
 
     @RequestMapping("/detail")

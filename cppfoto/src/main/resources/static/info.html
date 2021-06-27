@@ -32,9 +32,9 @@
 	</div>
 </div>
 	<p class="con-nav">
-      &nbsp;<a href="/info/list.html?category=14" hidefocus="hidefocus">首页大图 /</a>&nbsp;
+      &nbsp;<a href="/info.html" hidefocus="hidefocus">首页大图 /</a>&nbsp;
 		<a href="/Paper/" hidefocus="hidefocus">报友红图榜 /</a>&nbsp;
- 	   &nbsp;<a href="/infoPaper/" hidefocus="hidefocus">报纸投稿 </a>&nbsp;
+ 	   &nbsp;<a href="/info.html?directory=报纸征集" hidefocus="hidefocus">报纸投稿 </a>&nbsp;
 <!--		<a v-for="c in category_arr" hidefocus="hidefocus">/</a>&nbsp;-->
 		<a v-for="c in category_arr" :href="'info.html?categoryId='+c.id" hidefocus="hidefocus" v-text="'/'+c.name"></a>
 
@@ -69,7 +69,7 @@
 
 
 <div class="grid-item img-item" style="position: absolute; left: 0px; top: 0px;" v-for="a in article_arr">
-    <a href="/info/detail.html?id=410675" target="_blank" hidefocus="hidefocus">
+    <a :href="'/detail.html?id='+a.id" target="_blank" hidefocus="hidefocus">
 		<img :src="a.articleImgUrl"></a>
 	
 	<p class="fav">

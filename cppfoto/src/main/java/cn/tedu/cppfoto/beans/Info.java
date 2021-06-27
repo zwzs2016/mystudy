@@ -9,4 +9,5 @@ public class Info {
     private Integer categoryId;
     private String searchText;
     private String searchUser;
+    private String directory;
 }

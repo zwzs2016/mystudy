@@ -11,6 +11,6 @@ public class Words {
     private Integer id;
     private String contents;
     private Integer articleId;
-    private LocalDateTime createDate;
+    private Date createDate;
     private Integer userId;
 }

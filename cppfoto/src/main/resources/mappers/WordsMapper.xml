@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.tedu.cppfoto.mapper.WordsMapper">
+    <select id="select" resultType="cn.tedu.cppfoto.Vo.WordsVo">
+        SELECT w.id,
+               w.contents,
+               <choose>
+                   <when test="articleId!=null">
+                       u.username,
+                   </when>
+               <otherwise>
+                   a.title,
+                   a.id as articleId,
+               </otherwise>
+               </choose>
+               i.imgurl,
+               w.createDate,
+               w.`status`
+        from words w
+            <choose>
+                <when test="userId!=null">
+                    JOIN article a  JOIN images i on w.articleId=a.id and a.id=i.articleId
+                </when>
+                <otherwise>
+                    JOIN `user` u JOIN images i on w.userId=u.id and u.imagesId=i.id
+                </otherwise>
+            </choose>
+        <where>
+            <choose>
+                <when test="userId!=null">
+                    and w.userId=#{userId}
+                </when>
+                <otherwise>
+                    and w.articleId=#{articleId}
+                    and w.status=1
+                </otherwise>
+            </choose>
+        </where>
+    </select>
+</mapper>

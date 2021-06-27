@@ -5,7 +5,8 @@ let vm_info=new Vue({
             category_arr:[],
             articleimgurl:'',
             userimgurl:'',
-            searchUser:''
+            searchUser:'',
+            directory:''
         },
         methods:{
 
@@ -40,6 +41,14 @@ let vm_info=new Vue({
                     }
                 })
             }
+            else if(location.search.indexOf("directory")!=-1){
+                let directory=location.search.split("=")[1];
+                axios.get("/article/info?directory="+directory).then(function (response) {
+                    if (response.data){
+                        vm_info.article_arr=response.data;
+                    }
+                })
+            }
             else {
                 axios.get("/article/info").then(function (response) {
                     if (response.data){
@@ -47,8 +56,18 @@ let vm_info=new Vue({
                     }
                 });
             }
-           //获取首页分类
-            axios.get("/category").then(function (response) {
+            //获取首页分类
+            let directory;
+            if(location.search==''){
+                sessionStorage.setItem("directory",'undefined');
+            }
+            if(location.search.indexOf("directory")!=-1){
+                directory=location.search.split("=")[1];
+                sessionStorage.setItem("directory",directory);
+            }else {
+                directory=sessionStorage.getItem("directory");
+            }
+            axios.get("/category?directory="+(directory=='undefined'?'嘚瑟一下':directory)).then(function (response) {
                 if (response.data){
                     vm_info.category_arr=response.data;
                 }

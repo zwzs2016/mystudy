@@ -19,9 +19,7 @@
 	    <li><a href="/view.html" hidefocus="hidefocus">看点</a></li>
 		<li><a href="/info.html" hidefocus="hidefocus">圈子</a></li>
 		<li><a href="/video.html" hidefocus="hidefocus">视听</a></li>
-		<li><a href="http://dz.cppfoto.com/" target="_blank" hidefocus="hidefocus">影展</a></li>
-		<li><a href="http://byz.cppfoto.com/" target="_blank" hidefocus="hidefocus">订报</a></li>
-		
+
 	</ul>
 </div>
 <!--<div class="user fr"><div class="dropdown-wrap"><a class="poartrait" href="/user/profile.html" hidefocus="hidefocus"><img src="./info_files/portrait.jpg"></a><ul><li style="display:none;"><a href="/mall/cart.html" hidefocus="hidefocus"><i class="icon-1"></i>购物车<b class="_cart_num">0</b></a></li><li><a href="/user/coins.html" hidefocus="hidefocus"><i class="icon-2"></i>账户中心</a></li><li><a href="/user/msgs.html" hidefocus="hidefocus"><i class="icon-3"></i>站内消息</a></li><li><a href="/user/consults.html" hidefocus="hidefocus"><i class="icon-8"></i>我的咨询</a></li><li><a href="/user/workses.html" hidefocus="hidefocus"><i class="icon-4"></i>我的作品</a></li><li><a href="/user/infos.html" hidefocus="hidefocus"><i class="icon-5"></i>我的文章</a></li><li><a href="/user/infocomments.html" hidefocus="hidefocus"><i class="icon-8"></i>圈子评论</a></li><li><a href="/user/videocomments.html" hidefocus="hidefocus"><i class="icon-8"></i>视听评论</a></li><li><a href="/user/favorites.html" hidefocus="hidefocus"><i class="icon-6"></i>我的收藏</a></li><li><a href="/user/infos.html" hidefocus="hidefocus"><i class="icon-7"></i>最新资讯</a></li></ul></div><div class="info"><span class="hello">您好！，<a href="javascript:;" onclick="_exit()" hidefocus="hidefocus">[退出]</a></span><div class="rank">学前班</div></div></div>-->
@@ -34,7 +32,6 @@
 	    <a style="display:none;" href="/user/orders.html" hidefocus="hidefocus">我的电商</a>
 	    <a href="/user/infos.html" hidefocus="hidefocus">我的圈子</a>
 	    <a href="/user/videos.html" hidefocus="hidefocus">我的视听</a>
-	    <a href="/user/activities.html" hidefocus="hidefocus">我的影展</a>
 	    <a href="/user/coins.html" class="cur" hidefocus="hidefocus">个人中心</a>
 	</p>
 </div>
@@ -90,8 +87,8 @@
 
 	<div class="con-main fr" style="min-height: 426px;">
         <p class="leadpage clearfix"><b>我的积分</b></p>
-		<div class="my-score">
-			<p class="total-score">可用积分：<em>120</em> 积分</p>
+		<div class="my-score" id="myscore">
+			<p class="total-score">可用积分：<em v-text="score_sum"></em> 积分</p>
 			<table width="100%" border="0" cellpadding="0" cellspacing="0">
 				<thead>
 					<tr>
@@ -101,22 +98,10 @@
 					</tr>
 				</thead>
                 <tbody>
-                <tr>
-					<td class="con-1"><span>2021/6/20 10:30:50</span></td>
-					<td class="con-2 red"><span>+10</span></td>
-					<td class="con-3"><span>每天登录</span></td>
-				</tr>
-                
-                <tr>
-					<td class="con-1"><span>2021/6/19 9:01:50</span></td>
-					<td class="con-2 red"><span>+10</span></td>
-					<td class="con-3"><span>每天登录</span></td>
-				</tr>
-                
-                <tr>
-					<td class="con-1"><span>2021/6/18 22:17:17</span></td>
-					<td class="con-2 red"><span>+100</span></td>
-					<td class="con-3"><span>注册用户</span></td>
+                <tr v-for="s in score_arr">
+					<td class="con-1" v-text="s.createDate"><span></span></td>
+					<td class="con-2 red" v-text="'+'+s.pay"><span></span></td>
+					<td class="con-3"><span v-text="s.explain"></span></td>
 				</tr>
                 </tbody>
 			</table>
@@ -198,7 +183,9 @@ var _hmt = _hmt || [];
 })();
 </script>
 <script>_usercenter(4, 0);</script>
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src="/js/comm.js"></script>
+<script src="/js/vue/coins.js"></script>
 
 <div id="hm_t_undefined" class="hm-t-container"><div class="hm-t-go-top" style="display: block;"></div></div></body></html>

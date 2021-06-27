@@ -18,5 +18,5 @@ public class Article {
     private Integer imagesNum;
     private Integer userId;
     private Integer source;
-    private String status;
+    private int status;
 }

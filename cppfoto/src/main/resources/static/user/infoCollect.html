@@ -20,9 +20,7 @@
 	    <li><a href="/view.html" hidefocus="hidefocus">看点</a></li>
 		<li><a href="/info.html" hidefocus="hidefocus">圈子</a></li>
 		<li><a href="/video.html" hidefocus="hidefocus">视听</a></li>
-		<li><a href="http://dz.cppfoto.com/" target="_blank" hidefocus="hidefocus">影展</a></li>
-		<li><a href="http://byz.cppfoto.com/" target="_blank" hidefocus="hidefocus">订报</a></li>
-		
+
 	</ul>
 </div>
 <!--<div class="user fr"><div class="dropdown-wrap"><a class="poartrait" href="/user/profile.html" hidefocus="hidefocus"><img src="./info_files/portrait.jpg"></a><ul><li style="display:none;"><a href="/mall/cart.html" hidefocus="hidefocus"><i class="icon-1"></i>购物车<b class="_cart_num">0</b></a></li><li><a href="/user/coins.html" hidefocus="hidefocus"><i class="icon-2"></i>账户中心</a></li><li><a href="/user/msgs.html" hidefocus="hidefocus"><i class="icon-3"></i>站内消息</a></li><li><a href="/user/consults.html" hidefocus="hidefocus"><i class="icon-8"></i>我的咨询</a></li><li><a href="/user/workses.html" hidefocus="hidefocus"><i class="icon-4"></i>我的作品</a></li><li><a href="/user/infos.html" hidefocus="hidefocus"><i class="icon-5"></i>我的文章</a></li><li><a href="/user/infocomments.html" hidefocus="hidefocus"><i class="icon-8"></i>圈子评论</a></li><li><a href="/user/videocomments.html" hidefocus="hidefocus"><i class="icon-8"></i>视听评论</a></li><li><a href="/user/favorites.html" hidefocus="hidefocus"><i class="icon-6"></i>我的收藏</a></li><li><a href="/user/infos.html" hidefocus="hidefocus"><i class="icon-7"></i>最新资讯</a></li></ul></div><div class="info"><span class="hello">您好！，<a href="javascript:;" onclick="_exit()" hidefocus="hidefocus">[退出]</a></span><div class="rank">学前班</div></div></div>-->
@@ -35,7 +33,6 @@
 	    <a style="display:none;" href="/user/orders.html" hidefocus="hidefocus">我的电商</a>
 	    <a href="/user/infos.html" class="cur" hidefocus="hidefocus">我的圈子</a>
 	    <a href="/user/videos.html" hidefocus="hidefocus">我的视听</a>
-	    <a href="/user/activities.html" hidefocus="hidefocus">我的影展</a>
 	    <a href="/user/coins.html" hidefocus="hidefocus">个人中心</a>
 	</p>
 </div>
@@ -90,7 +87,7 @@
 	<div class="con-main fr" style="min-height: 460px;">
         <p class="leadpage clearfix"><b>报纸征集</b></p>
 		<div class="happy-time">
-			<form name="form1" method="post" action="/user/infoCollect.html" id="form1">
+			<form name="form1" method="post" action="" id="form1" enctype="multipart/form-data">
 <div>
 <input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKMTY0Nzc5MjUyNw9kFgICAw9kFgICAQ8WAh4LXyFJdGVtQ291bnQCCBYQZg9kFgJmDxUCAzE4NgzpopjmnZDkuI3pmZBkAgEPZBYCZg8VAgMyMTEM5bOw5bOm5Y+g5baCZAICD2QWAmYPFQIDMjEyCeS6uumAoOWFiWQCAw9kFgJmDxUCAzIxMwbotZvlnLpkAgQPZBYCZg8VAgMyMTQM5biC5LqV55Sf5rS7ZAIFD2QWAmYPFQIDMjE1BuiInuWPsGQCBg9kFgJmDxUCAzIxNgblm63mnpdkAgcPZBYCZg8VAgMyMTcG5omL5belZBgBBR5fX0NvbnRyb2xzUmVxdWlyZVBvc3RCYWNrS2V5X18WAwUMcmRvT3JpZ2luYWwxBQxyZG9PcmlnaW5hbDIFDHJkb09yaWdpbmFsMujZDmWpGX7WXO0mhedhONb/ffxj/wNDV+EWSk9tJGRz">
 </div>
@@ -103,23 +100,22 @@
 					<strong>选择标签：<i>*</i></strong>
 					<div class="form-con cate">
                     <a href="/user/info.html" style="overflow:hidden; max-height:30px;display:none;" hidefocus="hidefocus">圈子投稿</a>
-                    
-                        <a href="javascript:;" style="overflow:hidden; max-height:30px;" value="186" hidefocus="hidefocus">题材不限</a><a href="javascript:;" style="overflow:hidden; max-height:30px;" value="211" hidefocus="hidefocus">峰峦叠嶂</a><a href="javascript:;" style="overflow:hidden; max-height:30px;" value="212" hidefocus="hidefocus">人造光</a><a href="javascript:;" style="overflow:hidden; max-height:30px;" value="213" hidefocus="hidefocus">赛场</a><a href="javascript:;" style="overflow:hidden; max-height:30px;" value="214" hidefocus="hidefocus">市井生活</a><a href="javascript:;" style="overflow:hidden; max-height:30px;" value="215" hidefocus="hidefocus">舞台</a><a href="javascript:;" style="overflow:hidden; max-height:30px;" value="216" hidefocus="hidefocus">园林</a><a href="javascript:;" style="overflow:hidden; max-height:30px;" value="217" hidefocus="hidefocus">手工</a>
+                        <a href="javascript:;" style="overflow:hidden; max-height:30px;" :value="c.id" hidefocus="hidefocus" v-for="c in category_arr" v-text="c.name"></a>
                         <input type="hidden" name="hfCategory" id="hfCategory" value="0">
 					</div>
 				</div>
 				<div class="list-one clearfix">
 					<strong>标题：<i>*</i></strong>
 					<div class="form-con">
-                        <input name="txtTitle" type="text" id="txtTitle" class="text">
+                        <input name="title" type="text" id="txtTitle" class="text">
 					</div>
 				</div>
 				<div class="list-one clearfix">
 					<strong>来源：<i>*</i></strong>
 					<div class="form-con">
                         <p style="margin-top:15px;">
-                        <span class="radio"><input id="rdoOriginal1" type="radio" name="from" value="rdoOriginal1" checked="checked" onclick="$(&#39;.fromurl&#39;).hide();"></span>原创
-                        <span class="radio"><input id="rdoOriginal2" type="radio" name="from" value="rdoOriginal2" onclick="$(&#39;.fromurl&#39;).show();"></span>转载
+                        <span class="radio"><input id="rdoOriginal1" type="radio" name="source" value="1" checked="checked" onclick="$(&#39;.fromurl&#39;).hide();"></span>原创
+                        <span class="radio"><input id="rdoOriginal2" type="radio" name="source" value="2" onclick="$(&#39;.fromurl&#39;).show();"></span>转载
                         </p>
 					</div>
 				</div>
@@ -131,9 +127,10 @@
 				</div>
 				<div class="list-one clearfix">
 					<strong>上传图片：<i>*</i></strong>
-					<div class="form-con">
+					<div class="form-con" style="height: 70px">
 						<p class="button upload-img clearfix"><a href="javascript:;" hidefocus="hidefocus">选择文件</a></p>
-						<p class="tip">仅支持JPG、GIF、PNG、JPEG、BMP格式，文件小于1M，每次上传一张，可上传多张</p>
+						<input class="button upload-img clearfix" type="file" value="上传图片" multiple="multiple"  style="width: 200px;height: 50px;position: relative;top: -50px;opacity: 0;margin: 0;padding: 0" />
+						<p class="tip" style="margin: 0;padding: 0;position: relative;top: -60px;">仅支持JPG、GIF、PNG、JPEG、BMP格式，文件小于1M，每次上传一张，可上传多张</p>
                         <ul class="imgs">
                         
                         </ul>
@@ -154,13 +151,13 @@
 				<div class="list-one clearfix">
 					<strong>描述文字：</strong>
 					<div class="form-con">
-                        <textarea name="txtCont" rows="2" cols="20" id="txtCont"></textarea>
+                        <textarea name="content" rows="2" cols="20" id="txtCont"></textarea>
 					</div>
 				</div>
 				<div class="list-one clearfix">
 					<strong>&nbsp;</strong>
 					<div class="form-con btn">
-                        <input type="submit" name="btnSubmit" value="提交" onclick="return $.info.check();" id="btnSubmit" class="btn-1">
+                        <input type="button" name="btnSubmit" value="提交" onclick="return $.info.check();" id="btnSubmit" class="btn-1">
 					</div>
 				</div>
 			</form>
@@ -245,6 +242,27 @@ var _hmt = _hmt || [];
 </div>
 </script>
 <script>$.info.initial();</script>
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src="/js/comm.js"></script>
+<script src="/js/vue/infoCollect.js"></script>
+<script>
+	$(function () {
+		$(".form-con input:last").click(function () {
+			let data=new FormData($("form")[0]);
+			let files=$("input[type='file']")[0].files;
+			data.append('categoryId',categoryId);
+			for (let i=0;i<files.length;i++){
+				data.append('files',files[i]);
+			}
+			axios.post("/article/add",data).then(function (res) {
+				if(res.status==200){
+					alert('已提交待审核');
+					location.reload();
+				}
+			})
+		})
+	})
 
+</script>
 <div id="hm_t_undefined" class="hm-t-container"><div class="hm-t-go-top" style="display: block;"></div></div></body></html>

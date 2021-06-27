@@ -16,7 +16,7 @@ let vm_detail=new Vue({
                 axios.get("/collection/add?articleId="+vm_detail.article.id).then(function (response) {
                     if(response.data==1){
                         alert('收藏成功!');
-                    }else if(response.data==2){
+                    }else if(response.data==0){
                         alert('已被收藏了!')
                     }else {
                         alert('您还未登录!');
@@ -49,7 +49,10 @@ let vm_detail=new Vue({
                 axios.post("/words/add",words).then(function (response) {
                     if (response.data==1){
                         alert('发布成功!');
-                    }else {
+                        location.reload();
+                    }else if(response.data==0){
+                        alert('已经收藏过了!')
+                    } else {
                         alert('您还未登录!');
                         location.href='/login.html';
                     }
@@ -66,11 +69,6 @@ let vm_detail=new Vue({
                 })
             }
         },
-        updated(){
-            let aid=vm_detail.article["articleId"];
-            let uid=vm_detail.article["userId"];
-
-        },
         watch:{
             article(newdata,olddata){
                 let i=0
@@ -85,6 +83,11 @@ let vm_detail=new Vue({
                     axios.get("/images/selectbyuserid?id="+newdata["userId"]).then(function (response) {
                         vm_detail.images_user=response.data;
                     });
+                    axios.get("/words/selectbyarticleid?id="+newdata["id"]).then(function (response) {
+                        if(response.data){
+                            vm_detail.words_arr=response.data;
+                        }
+                    })
                 }
             }
         }

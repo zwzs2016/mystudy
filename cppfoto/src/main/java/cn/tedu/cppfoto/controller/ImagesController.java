@@ -28,7 +28,8 @@ public class ImagesController {
     UploadFile uploadFile;
 
     @RequestMapping("/portrait")
-    public void portrait(MultipartFile file){
+    public void portrait(MultipartFile file,HttpSession session){
+        User user=(User)session.getAttribute("user");
         String fileName=file.getOriginalFilename();
         String suffix=fileName.substring(fileName.lastIndexOf("."));
         fileName= UUID.randomUUID()+suffix;
@@ -47,10 +48,11 @@ public class ImagesController {
         }
         Images images = new Images();
         images.setImgUrl("/"+datePath+fileName);
+        User u=new User();
+        u.setId(user.getId());
         iMapper.insert(images);
-        User user=new User();
-        user.setImagesId(images.getId());
-        uMapper.update(user);
+        u.setImagesId(images.getId());
+        uMapper.update(u);
     }
 
     @RequestMapping("/portrait/selectimg")

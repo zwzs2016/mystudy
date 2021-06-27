@@ -5,8 +5,12 @@
     <select id="selctInfoAll" resultType="cn.tedu.cppfoto.Vo.InfoVo">
         SELECT s.id,s.title,s.likeCount,s.collectionNum,s.imagesNum,s.articleImgUrl,b.userimgurl FROM (SELECT a.userId,a.id,a.title,a.likeCount,a.collectionNum,a.imagesNum,i.imgurl as articleImgUrl FROM `article` a left JOIN `images` i on a.id=i.articleId
         <where>
+            and a.`status`=1
             <if test="categoryId!=null">
                 and a.categoryId=#{categoryId}
+            </if>
+            <if test="directory!=null">
+                and a.categoryId in (SELECT id FROM category WHERE `directory`=#{directory})
             </if>
         </where>
         GROUP BY a.id

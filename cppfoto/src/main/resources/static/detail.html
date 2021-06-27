@@ -129,6 +129,13 @@ glyphicon glyphicon-share"></span>
         </span>
         <input id="comment_btn" type="button" class="grey-green-btn fr" value="发表评论" @click="words">
         </div>
+		<div v-for="words in words_arr" v-if="words_arr!=null">
+			<img :src="words.imgUrl" alt="" width="40px" height="40px"/>
+			<span v-text="words.username"></span>
+			<span v-text="words.createDate"></span>：
+			<span v-text="words.contents"></span>
+			<hr>
+		</div>
     </div>
 </div>
 </div>

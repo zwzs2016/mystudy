@@ -1,42 +1,12 @@
-/*
- Navicat Premium Data Transfer
-
- Source Server         : zw
- Source Server Type    : MySQL
- Source Server Version : 50624
- Source Host           : localhost:3306
- Source Schema         : cppfoto
-
- Target Server Type    : MySQL
- Target Server Version : 50624
- File Encoding         : 65001
-
- Date: 25/06/2021 20:32:29
-*/
-
-SET NAMES utf8mb4;
-SET FOREIGN_KEY_CHECKS = 0;
-
--- ----------------------------
--- Table structure for words
--- ----------------------------
-DROP TABLE IF EXISTS `words`;
-CREATE TABLE `words`  (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `contents` varchar(1000) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `articleId` int(11) NULL DEFAULT NULL,
-  `createDate` datetime NULL DEFAULT NULL,
-  `userId` int(11) NULL DEFAULT NULL,
-  `status` int(1) NULL DEFAULT NULL,
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '留言表' ROW_FORMAT = DYNAMIC;
-
--- ----------------------------
--- Records of words
--- ----------------------------
-INSERT INTO `words` VALUES (3, 'dasadsa', 10, '2021-06-25 07:01:40', 9, NULL);
-INSERT INTO `words` VALUES (4, 'asdasdqweq', 10, '2021-06-25 07:03:17', 9, NULL);
-INSERT INTO `words` VALUES (5, 'dasdadad', 11, '2021-06-25 07:39:25', 9, NULL);
-INSERT INTO `words` VALUES (6, 'ascasdqwe', 11, '2021-06-25 07:39:36', 9, NULL);
-
-SET FOREIGN_KEY_CHECKS = 1;
+INSERT INTO `words` (`id`, `contents`, `articleId`, `createDate`, `userId`, `status`) VALUES (3, 'dasadsa', 10, '2021-06-25 07:01:40', 9, 1);
+INSERT INTO `words` (`id`, `contents`, `articleId`, `createDate`, `userId`, `status`) VALUES (4, 'asdasdqweq', 10, '2021-06-25 07:03:17', 9, 1);
+INSERT INTO `words` (`id`, `contents`, `articleId`, `createDate`, `userId`, `status`) VALUES (5, 'dasdadad', 11, '2021-06-25 07:39:25', 9, 1);
+INSERT INTO `words` (`id`, `contents`, `articleId`, `createDate`, `userId`, `status`) VALUES (7, 'dasdqw', 10, '2021-06-26 06:46:51', 9, 1);
+INSERT INTO `words` (`id`, `contents`, `articleId`, `createDate`, `userId`, `status`) VALUES (8, '这个图片很好!', 21, '2021-06-26 07:18:44', 9, 1);
+INSERT INTO `words` (`id`, `contents`, `articleId`, `createDate`, `userId`, `status`) VALUES (9, '不错！nice!!!', 21, '2021-06-26 07:19:04', 9, 1);
+INSERT INTO `words` (`id`, `contents`, `articleId`, `createDate`, `userId`, `status`) VALUES (10, '很好了!不错啊！！', 21, '2021-06-26 07:32:49', 12, 0);
+INSERT INTO `words` (`id`, `contents`, `articleId`, `createDate`, `userId`, `status`) VALUES (11, 'good', 21, '2021-06-26 07:37:35', 9, 1);
+INSERT INTO `words` (`id`, `contents`, `articleId`, `createDate`, `userId`, `status`) VALUES (12, '很好！', 21, '2021-06-26 07:42:41', 9, 0);
+INSERT INTO `words` (`id`, `contents`, `articleId`, `createDate`, `userId`, `status`) VALUES (13, 'dddd', 21, '2021-06-26 07:45:36', 9, 0);
+INSERT INTO `words` (`id`, `contents`, `articleId`, `createDate`, `userId`, `status`) VALUES (14, '1111', 21, '2021-06-26 07:51:37', 9, 0);
+INSERT INTO `words` (`id`, `contents`, `articleId`, `createDate`, `userId`, `status`) VALUES (15, '222', 21, '2021-06-26 15:59:38', 9, 0);

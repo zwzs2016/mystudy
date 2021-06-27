@@ -1,5 +1,6 @@
 package cn.tedu.cppfoto.controller;
 
+import cn.tedu.cppfoto.Vo.CollectionVo;
 import cn.tedu.cppfoto.Vo.WordsVo;
 import cn.tedu.cppfoto.entity.User;
 import cn.tedu.cppfoto.entity.Words;
@@ -24,12 +25,32 @@ public class WordsController {
             return 0;
         }
         words.setUserId(user.getId());
+        System.out.println(words);
         wMapper.insert(words);
         return 1;
     }
 
     @GetMapping
-    public List<WordsVo> selectAll(HttpSession session){
-        return wMapper.selectAll(((User)session.getAttribute("user")).getId());
+    public List<WordsVo> select(HttpSession session){
+        User user=(User) session.getAttribute("user");
+        if(user!=null){
+            return wMapper.select(user.getId(),null);
+        }
+        return null;
+    }
+
+    @GetMapping("/selectbyarticleid")
+    public List<WordsVo> selectByArticleId(int id, HttpSession session){
+        if(session.getAttribute("user")!=null){
+            return wMapper.select(null,id);
+        }
+        return null;
+    }
+
+    @GetMapping("/delwords")
+    public void delWords(int id,HttpSession session){
+        if(session.getAttribute("user")!=null){
+            wMapper.deleteById(id);
+        }
     }
 }
