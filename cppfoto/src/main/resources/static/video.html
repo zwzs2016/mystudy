@@ -34,225 +34,23 @@
 <div class="login fr"><a href="/register.html" hidefocus="hidefocus">注册</a><a href="/login.html?from=/video/" hidefocus="hidefocus">登录</a></div>
 </div>
 
-<div class="content layout">
+<div class="content layout" id="video">
 <div class="con-nav-wrap">
     <a href="/video/" class="shiting" hidefocus="hidefocus"></a>
 	<p class="con-nav">
-        <a href="/video/list.html?category=1" hidefocus="hidefocus">小九来了</a>&nbsp;<a hidefocus="hidefocus">/</a>&nbsp;<a href="/video/list.html?category=6" hidefocus="hidefocus">原来这么拍</a>&nbsp;<a hidefocus="hidefocus">/</a>&nbsp;<a href="/video/list.html?category=5" hidefocus="hidefocus">影像档案</a>&nbsp;<a hidefocus="hidefocus">/</a>&nbsp;<a href="/video/list.html?category=4" hidefocus="hidefocus">数码后期</a>&nbsp;<a hidefocus="hidefocus">/</a>&nbsp;<a href="/video/list.html?category=2" hidefocus="hidefocus">其它</a>
+        <a v-for="c in category_arr" :href="'/video.html?category='+c.id"  hidefocus="hidefocus" v-text="c.name+'  '"></a>&nbsp;<a hidefocus="hidefocus"></a>
 	</p>
 </div>
 <div class="content-con">
     <ul class="clearfix">
     <li class="category-1 category-name"><span><a href="/video/list.html?category=1" hidefocus="hidefocus">小九来了</a></span></li>
     
-    <li class="data">
-		<a href="/video/detail.html?id=178" target="_blank" hidefocus="hidefocus">
-			<img src="video_files/14cb73d07ffa4b0f889c5d6dfacadea1.jpg" alt="">
+    <li class="data" v-for="v in video_arr">
+		<a  href="/video/detail.html?id=178" target="_blank" hidefocus="hidefocus">
+			<img :src="'video_files/images/'+v.imgurl" alt="" >
 			<div class="shadow" style="display: none;">
 				<span class="bg"></span>
-				<div class="shadow-con"><p class="title">拿相机的姿势</p></div>
-			</div>
-		</a>
-	</li>
-    
-    <li class="data">
-		<a href="/video/detail.html?id=185" target="_blank" hidefocus="hidefocus">
-			<img src="video_files/de553fd816ae4d6488db42ec106e06e7.jpg" alt="">
-			<div class="shadow" style="display: none;">
-				<span class="bg"></span>
-				<div class="shadow-con"><p class="title">手表拍摄</p></div>
-			</div>
-		</a>
-	</li>
-    
-    <li class="data">
-		<a href="/video/detail.html?id=137" target="_blank" hidefocus="hidefocus">
-			<img src="video_files/f7f4fe5f854443acbbd148b10db654ca.jpg" alt="">
-			<div class="shadow" style="display: none;">
-				<span class="bg"></span>
-				<div class="shadow-con"><p class="title">单反镜头的拍摄技巧</p></div>
-			</div>
-		</a>
-	</li>
-    
-    <li class="data">
-		<a href="/video/detail.html?id=181" target="_blank" hidefocus="hidefocus">
-			<img src="video_files/ed76dc835a484d8f96856d8894aa73b1.jpg" alt="">
-			<div class="shadow" style="display: none;">
-				<span class="bg"></span>
-				<div class="shadow-con"><p class="title">夜晚的游戏－光绘</p></div>
-			</div>
-		</a>
-	</li>
-    
-    <li class="data">
-		<a href="/video/detail.html?id=153" target="_blank" hidefocus="hidefocus">
-			<img src="video_files/4a8f534f924644b2a9348f55b6bf452e.jpg" alt="">
-			<div class="shadow" style="display: block;">
-				<span class="bg"></span>
-				<div class="shadow-con"><p class="title">摄影灯知识普及</p></div>
-			</div>
-		</a>
-	</li>
-    
-    
-    <li class="category-2 category-name"><span><a href="/video/list.html?category=6" hidefocus="hidefocus">原来这么拍</a></span></li>
-    
-    <li class="data">
-		<a href="/video/detail.html?id=235" target="_blank" hidefocus="hidefocus">
-			<img src="video_files/a4f20854299343d4a22a0fd71716dd63.jpg" alt="">
-			<div class="shadow" style="display: none;">
-				<span class="bg"></span>
-				<div class="shadow-con"><p class="title">小吴哥日出</p></div>
-			</div>
-		</a>
-	</li>
-    
-    <li class="data">
-		<a href="/video/detail.html?id=246" target="_blank" hidefocus="hidefocus">
-			<img src="video_files/a8dd8afddb374d389763609377b1e7be.jpg" alt="">
-			<div class="shadow" style="display: none;">
-				<span class="bg"></span>
-				<div class="shadow-con"><p class="title">原来这么拍 第二季 第4集：流星不够极光来凑</p></div>
-			</div>
-		</a>
-	</li>
-    
-    <li class="data">
-		<a href="/video/detail.html?id=241" target="_blank" hidefocus="hidefocus">
-			<img src="video_files/532ce7e5c6804d0f8270c991e7b28b68.jpg" alt="">
-			<div class="shadow" style="display: none;">
-				<span class="bg"></span>
-				<div class="shadow-con"><p class="title">原来这么拍 第一季 第7集：手持战慢门</p></div>
-			</div>
-		</a>
-	</li>
-    
-    <li class="data">
-		<a href="/video/detail.html?id=238" target="_blank" hidefocus="hidefocus">
-			<img src="video_files/0956a15c9a644dc09007c2929246bab4.jpg" alt="">
-			<div class="shadow" style="display: none;">
-				<span class="bg"></span>
-				<div class="shadow-con"><p class="title">原来这么拍 第一季 第4集：消失的人潮</p></div>
-			</div>
-		</a>
-	</li>
-    
-    <li class="data">
-		<a href="/video/detail.html?id=242" target="_blank" hidefocus="hidefocus">
-			<img src="video_files/0a75eea4880f46beb2e10eaaf1e6c160.jpg" alt="">
-			<div class="shadow" style="display: none;">
-				<span class="bg"></span>
-				<div class="shadow-con"><p class="title">原来这么拍 第一季 第8集：在街头遇见你</p></div>
-			</div>
-		</a>
-	</li>
-    
-    
-    <li class="category-3 category-name"><span><a href="/video/list.html?category=5" hidefocus="hidefocus">影像档案</a></span></li>
-    
-    <li class="data">
-		<a href="/video/detail.html?id=249" target="_blank" hidefocus="hidefocus">
-			<img src="video_files/e543fa9d5891430a818133f9f09bfad5.jpg" alt="">
-			<div class="shadow" style="display: none;">
-				<span class="bg"></span>
-				<div class="shadow-con"><p class="title">风光摄影的视觉</p></div>
-			</div>
-		</a>
-	</li>
-    
-    <li class="data">
-		<a href="/video/detail.html?id=257" target="_blank" hidefocus="hidefocus">
-			<img src="video_files/948b7b36018c46a285cb20a941922fc9.jpg" alt="">
-			<div class="shadow" style="display: none;">
-				<span class="bg"></span>
-				<div class="shadow-con"><p class="title">东方印象</p></div>
-			</div>
-		</a>
-	</li>
-    
-    <li class="data">
-		<a href="/video/detail.html?id=233" target="_blank" hidefocus="hidefocus">
-			<img src="video_files/9d0b716344a3415abadb20dbcb96efce.jpg" alt="">
-			<div class="shadow">
-				<span class="bg"></span>
-				<div class="shadow-con"><p class="title">对比</p></div>
-			</div>
-		</a>
-	</li>
-    
-    <li class="data">
-		<a href="/video/detail.html?id=260" target="_blank" hidefocus="hidefocus">
-			<img src="video_files/45622d4b8be645278ea07fe03c68ef50.jpg" alt="">
-			<div class="shadow">
-				<span class="bg"></span>
-				<div class="shadow-con"><p class="title">喜庆之夜定格炫彩烟花</p></div>
-			</div>
-		</a>
-	</li>
-    
-    <li class="data">
-		<a href="/video/detail.html?id=253" target="_blank" hidefocus="hidefocus">
-			<img src="video_files/ec45405da9e5416f915dd021adaacd64.jpg" alt="">
-			<div class="shadow" style="display: none;">
-				<span class="bg"></span>
-				<div class="shadow-con"><p class="title">吹毛求疵</p></div>
-			</div>
-		</a>
-	</li>
-    
-    
-    <li class="category-4 category-name"><span><a href="/video/list.html?category=4" hidefocus="hidefocus">数码后期</a></span></li>
-    
-    <li class="data">
-		<a href="/video/detail.html?id=263" target="_blank" hidefocus="hidefocus">
-			<img src="video_files/36a59c6e92a8471e9994b30c7cea35d6.jpg" alt="">
-			<div class="shadow">
-				<span class="bg"></span>
-				<div class="shadow-con"><p class="title">魔幻光影-生机后期视频</p></div>
-			</div>
-		</a>
-	</li>
-    
-    <li class="data">
-		<a href="/video/detail.html?id=262" target="_blank" hidefocus="hidefocus">
-			<img src="video_files/a0d3637369d447afa733eb34088935e9.jpg" alt="">
-			<div class="shadow">
-				<span class="bg"></span>
-				<div class="shadow-con"><p class="title">魔幻光影-坚实后期视频</p></div>
-			</div>
-		</a>
-	</li>
-    
-    <li class="data">
-		<a href="/video/detail.html?id=261" target="_blank" hidefocus="hidefocus">
-			<img src="video_files/86cbc13dbb78460198468e730e083317.jpg" alt="">
-			<div class="shadow">
-				<span class="bg"></span>
-				<div class="shadow-con"><p class="title">魔幻光影-薄纱后期视频</p></div>
-			</div>
-		</a>
-	</li>
-    
-    
-    <li class="category-5 category-name"><span><a href="/video/list.html?category=2" hidefocus="hidefocus">其它</a></span></li>
-    
-    <li class="data">
-		<a href="/video/detail.html?id=230" target="_blank" hidefocus="hidefocus">
-			<img src="video_files/243dbe60dc9646d384c42d62f4b8e72d.jpg" alt="">
-			<div class="shadow" style="display: none;">
-				<span class="bg"></span>
-				<div class="shadow-con"><p class="title">摄影改变生活</p></div>
-			</div>
-		</a>
-	</li>
-    
-    <li class="data">
-		<a href="/video/detail.html?id=231" target="_blank" hidefocus="hidefocus">
-			<img src="video_files/f847f0b4ed36442da8eaf3d9ec8371c6.jpg" alt="">
-			<div class="shadow" style="display: none;">
-				<span class="bg"></span>
-				<div class="shadow-con"><p class="title">中国凤凰摄影双年展</p></div>
+				<div class="shadow-con"><p class="title" v-text="v.title">拿相机的姿势</p></div>
 			</div>
 		</a>
 	</li>
@@ -336,6 +134,7 @@ var _hmt = _hmt || [];
         $(this).find('.shadow').slideUp();
     });
 </script>
-
-
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="/js/vue/video.js"></script>
 <div id="hm_t_undefined" class="hm-t-container"><div class="hm-t-go-top" style="display: none;"></div></div></body></html>
