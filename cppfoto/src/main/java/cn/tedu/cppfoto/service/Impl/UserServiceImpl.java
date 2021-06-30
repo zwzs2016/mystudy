@@ -5,14 +5,20 @@ import cn.tedu.cppfoto.entity.Message;
 import cn.tedu.cppfoto.entity.User;
 import cn.tedu.cppfoto.mapper.IntegralMapper;
 import cn.tedu.cppfoto.mapper.MessageMapper;
+import cn.tedu.cppfoto.mapper.UserMapper;
 import cn.tedu.cppfoto.service.UserService;
 
 import cn.tedu.cppfoto.utils.DateHandle;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -20,10 +26,18 @@ public class UserServiceImpl implements UserService {
     private int adminId;
     @Autowired
     MessageMapper messageMapper;
+
+    @Autowired
+    UserMapper uMapper;
+
     @Autowired
     IntegralMapper integralMapper;
     @Autowired
     DateHandle dateHandle;
+    @Autowired
+    StringRedisTemplate stringRedisTemplate;
+    @Autowired
+    ObjectMapper objectMapper;
 
     @Override
     public void integral(User user) {
@@ -56,6 +70,44 @@ public class UserServiceImpl implements UserService {
         message.setFromuserId(adminId);
         message.setUserId(user.getId());
         messageMapper.insert(message);
+    }
+
+    @Override
+    public void setUser(User user) {
+        try {
+            stringRedisTemplate.opsForValue().set("USER_"+user.getId(),objectMapper.writeValueAsString(user),30, TimeUnit.MINUTES);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public User getUser(User user) {
+        User u=null;
+        if(stringRedisTemplate.hasKey("USER_"+user.getId())) {
+            try {
+                u = objectMapper.readValue(stringRedisTemplate.opsForValue().get("USER_" + user.getId()), User.class);
+            } catch (JsonProcessingException e) {
+                e.printStackTrace();
+            }
+            return u;
+        }
+        return uMapper.check(user);
+    }
+
+    @Override
+    public void update(User user) {
+        uMapper.update(user);
+        //更新Redis
+        if(stringRedisTemplate.hasKey("USER_"+user.getId())){
+            stringRedisTemplate.delete("USER_"+user.getId());
+        }
+        try {
+            stringRedisTemplate.opsForValue().set("USER_"+user.getId(),objectMapper.writeValueAsString(uMapper.check(user)),30, TimeUnit.MINUTES);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+
     }
 
 }

@@ -51,6 +51,8 @@ public class UserController {
                 session.setAttribute("user",u);
                 //积分++
                 userService.integral(u);
+                //用户User存入redis
+                userService.setUser(u);
                 return 1;
             }else {
                 return 2;//密码错误
@@ -72,16 +74,22 @@ public class UserController {
     @RequestMapping("/profile")
     public User profile(HttpSession session){
         User user=(User)session.getAttribute("user");
+
         if(user!=null){
-            return uMapper.check(user);
+            return userService.getUser(user);
+            //return uMapper.check(user);
         }
         return new User();
     }
 
     @RequestMapping("/profileedit")
-    public void profileedit(User user){
+    public void profileedit(User user,HttpSession session){
         System.out.println("user = " + user);
-        uMapper.update(user);
+        User u=(User)session.getAttribute("user");
+        if(u!=null){
+            user.setId(u.getId());
+            userService.update(user);
+        }
     }
 
     @RequestMapping("/selectuserbyid")
