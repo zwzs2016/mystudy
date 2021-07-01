@@ -2,6 +2,7 @@ package cn.tedu.cppfoto.controller;
 
 import cn.tedu.cppfoto.entity.Video;
 import cn.tedu.cppfoto.service.VideoService;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,8 +17,8 @@ public class VideoController {
     VideoService videoService;
 
     @GetMapping
-    public List<Video> select(int categoryId){
+    public PageInfo<Video> select(int categoryId,Integer pageNum){
         System.out.println("categoryId = " + categoryId);
-        return videoService.select(categoryId);
+        return videoService.select(categoryId,pageNum==null?1:pageNum,4);
     }
 }

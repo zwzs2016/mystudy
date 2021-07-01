@@ -3,7 +3,20 @@ let vm_video=new Vue({
     data:{
       category_arr:[],
       images_arr:[],
-      video_arr:[]
+      video_arr:[],
+      pageinfo:{}
+    },
+    methods:{
+        videopages(pageNum){
+            //video_arr
+            let categoryId=location.search.split('=')[1];
+            axios.get("/video?categoryId="+(categoryId==undefined?24:categoryId)+"&pageNum="+pageNum).then(function (res) {
+                if(res.data){
+                    vm_video.video_arr=res.data.list;
+                    vm_video.pageinfo=res.data;
+                }
+            })
+        }
     },
     created(){
         axios.get("/category?directory=视听").then(function (res) {
@@ -13,9 +26,10 @@ let vm_video=new Vue({
         })
         //video_arr
         let categoryId=location.search.split('=')[1];
-        axios.get("/video?categoryId="+(categoryId==undefined?24:categoryId)).then(function (res) {
+        axios.get("/video?categoryId="+(categoryId==undefined?24:categoryId)+"&pageNum=1").then(function (res) {
             if(res.data){
-                vm_video.video_arr=res.data;
+                vm_video.video_arr=res.data.list;
+                vm_video.pageinfo=res.data;
             }
         })
     }
