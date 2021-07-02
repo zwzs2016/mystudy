@@ -17,11 +17,12 @@ let vm_info=new Vue({
     methods:{
     },
     updated(){
-        $(".list-one .form-con a").click(function () {
-            vm_info.categoryId=$(this).attr('value');
-            categoryId=vm_info.categoryId;
+        $(".form-con a").click(function () {
+            categoryId=$(this).attr('value');
+            vm_info.categoryId=categoryId;
             $(this).css({background: '#f00',border: 'solid 1px #f00',color: '#fff'});
-            $("#hfCategory").val(vm_info.categoryId);
+            $(this).siblings().css({background: '#fff',border: 'solid 1px #DFDFDF',color: '#000'})
+            $("#hfCategory").val(categoryId);
         })
     },
 })

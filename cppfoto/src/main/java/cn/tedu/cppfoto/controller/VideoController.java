@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.GroupSequence;
 import java.util.List;
 
 @RestController
@@ -20,5 +21,9 @@ public class VideoController {
     public PageInfo<Video> select(int categoryId,Integer pageNum){
         System.out.println("categoryId = " + categoryId);
         return videoService.select(categoryId,pageNum==null?1:pageNum,4);
+    }
+    @GetMapping("selectbyid")
+    public Video selectById(int id){
+       return videoService.select(id);
     }
 }

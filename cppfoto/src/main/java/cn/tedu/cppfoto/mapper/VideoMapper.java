@@ -8,6 +8,5 @@ import java.util.List;
 
 @Mapper
 public interface VideoMapper {
-    @Select("select id,title,imgurl from video  where categoryId=#{id}")
-    List<Video> select(int id);
+    List<Video> select(Integer categoryId,Integer id);
 }
