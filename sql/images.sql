@@ -1,55 +1,46 @@
-INSERT INTO `images` (`id`, `imgurl`, `articleId`) VALUES (1, '/2021/06/21/3f18834e-8e98-4300-b284-c83a6da9e401.jpg', NULL);
-INSERT INTO `images` (`id`, `imgurl`, `articleId`) VALUES (2, '/2021/06/21/2df80df8-1b5b-42c2-bd37-04788f59a1c9.jpg', NULL);
-INSERT INTO `images` (`id`, `imgurl`, `articleId`) VALUES (3, '/2021/06/21/f9c6a95b-1c71-4044-8237-58dcdb922f6f.jpg', NULL);
-INSERT INTO `images` (`id`, `imgurl`, `articleId`) VALUES (4, '/2021/06/21/d6b05dce-5e58-4f3c-a44c-592d11a8348c.jpg', NULL);
-INSERT INTO `images` (`id`, `imgurl`, `articleId`) VALUES (5, '/2021/06/21/42a0c0ad-193c-4994-b275-fe9fbf8e147c.jpg', NULL);
-INSERT INTO `images` (`id`, `imgurl`, `articleId`) VALUES (6, '/2021/06/21/07ed9134-9c9a-47df-b8e9-d71de3e5bccf.jpg', NULL);
-INSERT INTO `images` (`id`, `imgurl`, `articleId`) VALUES (7, '/2021/06/21/6f52f54d-7b99-412f-a8be-0e7fc4744d55.jpg', NULL);
-INSERT INTO `images` (`id`, `imgurl`, `articleId`) VALUES (8, '/2021/06/21/e8389bf7-cb6b-40b5-8e5e-76e3fd8cce87.jpg', NULL);
-INSERT INTO `images` (`id`, `imgurl`, `articleId`) VALUES (9, '/2021/06/21/d78d6275-dc56-40c3-8170-c3393f2afbd1.jpg', NULL);
-INSERT INTO `images` (`id`, `imgurl`, `articleId`) VALUES (10, '/2021/06/21/a0cf156f-8c8a-4bde-9c32-135beee54a0f.jpg', NULL);
-INSERT INTO `images` (`id`, `imgurl`, `articleId`) VALUES (11, '/2021/06/21/29450aa6-5727-412e-9f25-382df40d3fe7.jpg', NULL);
-INSERT INTO `images` (`id`, `imgurl`, `articleId`) VALUES (12, '/2021/06/21/2a37c85e-00d4-4490-94ca-27c1bea4865d.jpg', NULL);
-INSERT INTO `images` (`id`, `imgurl`, `articleId`) VALUES (13, '/2021/06/21/98ad8f77-bf67-4628-8349-6f29614c1088.jpg', NULL);
-INSERT INTO `images` (`id`, `imgurl`, `articleId`) VALUES (14, '/2021/06/21/10139947-5179-4939-b4ea-351256e73c9f.jpg', NULL);
-INSERT INTO `images` (`id`, `imgurl`, `articleId`) VALUES (15, '/2021/06/21/805b387c-1082-4376-a0b9-3f9d801cb318.jpg', NULL);
-INSERT INTO `images` (`id`, `imgurl`, `articleId`) VALUES (16, '/2021/06/21/a466c8b8-d163-4460-b31d-0977f8c32844.jpg', 9);
-INSERT INTO `images` (`id`, `imgurl`, `articleId`) VALUES (17, '/2021/06/21/91366e26-d2f7-4a10-a6a9-c306bf77da2b.jpg', 10);
-INSERT INTO `images` (`id`, `imgurl`, `articleId`) VALUES (18, '/2021/06/21/73c9d805-c097-4055-8ec4-2075649ef6fa.jpg', 11);
-INSERT INTO `images` (`id`, `imgurl`, `articleId`) VALUES (19, '/2021/06/23/2fa8b12c-8e67-4b3d-a8c5-fa5f7dff56d5.jpg', 12);
-INSERT INTO `images` (`id`, `imgurl`, `articleId`) VALUES (20, '/2021/06/23/7d4dc0c2-7c70-468e-ac42-d4173584b70f.jpg', 13);
-INSERT INTO `images` (`id`, `imgurl`, `articleId`) VALUES (21, '/2021/06/23/c28db648-68f7-4f92-b8c7-d8100df9906c.jpg', 14);
-INSERT INTO `images` (`id`, `imgurl`, `articleId`) VALUES (22, '/2021/06/23/6925cd8c-3dec-474c-96eb-b92110d346e0.jpg', NULL);
-INSERT INTO `images` (`id`, `imgurl`, `articleId`) VALUES (23, '/2021/06/23/795a39f1-e70c-4f6f-a471-c3b1f0788268.jpg', NULL);
-INSERT INTO `images` (`id`, `imgurl`, `articleId`) VALUES (24, '/2021/06/23/5e1eb00a-0a4b-497f-95c9-999587408817.jpg', NULL);
-INSERT INTO `images` (`id`, `imgurl`, `articleId`) VALUES (25, '/2021/06/23/7ee49eb2-1add-448c-9439-e56e99591bad.jpg', NULL);
-INSERT INTO `images` (`id`, `imgurl`, `articleId`) VALUES (26, '/2021/06/23/1d499f12-fe43-4c1c-a8d0-a45b27a19ea8.jpg', NULL);
-INSERT INTO `images` (`id`, `imgurl`, `articleId`) VALUES (27, '/2021/06/23/230f76c3-1d2f-4808-b998-b57b45a0c9ee.jpg', NULL);
-INSERT INTO `images` (`id`, `imgurl`, `articleId`) VALUES (28, '/2021/06/23/a8914911-0f80-465b-819d-7c368890602b.jpg', NULL);
-INSERT INTO `images` (`id`, `imgurl`, `articleId`) VALUES (29, '/2021/06/23/09303803-df68-4bca-bee0-6934d7d91fcb.jpg', 16);
-INSERT INTO `images` (`id`, `imgurl`, `articleId`) VALUES (30, '/2021/06/23/d99e651b-668d-41b8-8936-d60e0f7d1f21.jpg', 17);
-INSERT INTO `images` (`id`, `imgurl`, `articleId`) VALUES (31, '/2021/06/23/194c14a3-76af-45e4-a575-a1359c9b19f9.jpg', 18);
-INSERT INTO `images` (`id`, `imgurl`, `articleId`) VALUES (32, '/2021/06/23/791a63de-7c8c-44d9-a449-eecd4a6f52f7.jpg', 19);
-INSERT INTO `images` (`id`, `imgurl`, `articleId`) VALUES (33, '/2021/06/23/28a74cda-4419-4bab-b7a5-103d792154d2.jpg', 19);
-INSERT INTO `images` (`id`, `imgurl`, `articleId`) VALUES (34, '/2021/06/23/90deb38d-5c61-4c88-8870-cb20f3558295.jpg', 19);
-INSERT INTO `images` (`id`, `imgurl`, `articleId`) VALUES (35, '/2021/06/23/d2f1cb9d-6bcb-4572-821a-5148d4841c7c.jpg', 20);
-INSERT INTO `images` (`id`, `imgurl`, `articleId`) VALUES (36, '/2021/06/23/636d5487-e680-4226-b427-833fa3635cfc.jpg', 20);
-INSERT INTO `images` (`id`, `imgurl`, `articleId`) VALUES (37, '/2021/06/23/6dd8d98a-d3fa-485e-9429-8ea1eb51b55c.jpg', 20);
-INSERT INTO `images` (`id`, `imgurl`, `articleId`) VALUES (38, '/2021/06/23/bb329612-e002-448a-bd50-a73d92025b38.jpg', NULL);
-INSERT INTO `images` (`id`, `imgurl`, `articleId`) VALUES (39, '/2021/06/23/cee08905-dcc9-4059-ade1-a9e5973bb582.jpg', NULL);
-INSERT INTO `images` (`id`, `imgurl`, `articleId`) VALUES (40, '/2021/06/23/55a11293-2240-4289-bc5e-20d4ea4aec96.jpg', NULL);
-INSERT INTO `images` (`id`, `imgurl`, `articleId`) VALUES (41, '/2021/06/26/01f035bf-094c-423c-9b79-3d84e4d0b740.jpg', NULL);
-INSERT INTO `images` (`id`, `imgurl`, `articleId`) VALUES (42, '/2021/06/26/c965b85b-d6fd-40af-8953-3804f8193c4c.jpg', 21);
-INSERT INTO `images` (`id`, `imgurl`, `articleId`) VALUES (43, '/2021/06/26/d5811580-d9b4-4561-8a91-22850d8b0e9d.jpeg', NULL);
-INSERT INTO `images` (`id`, `imgurl`, `articleId`) VALUES (44, '/2021/06/26/69118c8d-a01a-4952-a786-87bc7214e353.jpg', NULL);
-INSERT INTO `images` (`id`, `imgurl`, `articleId`) VALUES (45, '/2021/06/26/d0b0046b-9468-4502-91a2-b56bc0c33106.jpeg', NULL);
-INSERT INTO `images` (`id`, `imgurl`, `articleId`) VALUES (46, '/2021/06/26/6e2375ff-88cd-4680-a290-dd9a9a9f37a0.jpeg', NULL);
-INSERT INTO `images` (`id`, `imgurl`, `articleId`) VALUES (47, '/2021/06/26/199a08df-218c-418c-abae-f6a5983e0aa6.jpeg', NULL);
-INSERT INTO `images` (`id`, `imgurl`, `articleId`) VALUES (48, '/2021/06/26/e027b3d4-5b80-4c32-a32e-cd9bd52fbdce.jpeg', NULL);
-INSERT INTO `images` (`id`, `imgurl`, `articleId`) VALUES (49, '/2021/06/26/4aad8f58-4af5-4e86-947a-d9da8283f638.jpg', 22);
-INSERT INTO `images` (`id`, `imgurl`, `articleId`) VALUES (50, '/2021/06/26/484a03a5-89bb-4324-a7f0-33acfe6c0cf5.jpg', 22);
-INSERT INTO `images` (`id`, `imgurl`, `articleId`) VALUES (51, '/2021/06/26/bb060bb7-63d3-4b91-8089-13192964ed35.jpg', 23);
-INSERT INTO `images` (`id`, `imgurl`, `articleId`) VALUES (52, '/2021/06/26/6c827f21-98d4-4dff-8fdc-5ac6c3775842.jpeg', 24);
-INSERT INTO `images` (`id`, `imgurl`, `articleId`) VALUES (53, '/2021/06/26/d92ce48b-53c8-4fab-ace5-b0321fecb898.jpg', 24);
-INSERT INTO `images` (`id`, `imgurl`, `articleId`) VALUES (54, '/2021/06/26/9221383d-fd7d-4188-a3f0-ec0a2eaebbc6.jpg', 25);
-INSERT INTO `images` (`id`, `imgurl`, `articleId`) VALUES (55, '/2021/06/26/3ac7c036-e428-475b-8142-85a13fb25a56.jpg', 25);
+/*
+ Navicat Premium Data Transfer
+
+ Source Server         : zw
+ Source Server Type    : MySQL
+ Source Server Version : 50624
+ Source Host           : localhost:3306
+ Source Schema         : cppfoto
+
+ Target Server Type    : MySQL
+ Target Server Version : 50624
+ File Encoding         : 65001
+
+ Date: 03/07/2021 17:50:56
+*/
+
+SET NAMES utf8mb4;
+SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+-- Table structure for images
+-- ----------------------------
+DROP TABLE IF EXISTS `images`;
+CREATE TABLE `images`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `imgurl` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `articleId` int(11) NULL DEFAULT NULL,
+  `videoId` int(11) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+
+-- ----------------------------
+-- Records of images
+-- ----------------------------
+INSERT INTO `images` VALUES (1, '0/0.jpg', NULL, 1);
+INSERT INTO `images` VALUES (2, '0/1.jpg', NULL, 2);
+INSERT INTO `images` VALUES (3, '0/2.jpg', NULL, 3);
+INSERT INTO `images` VALUES (4, '0/3.jpg', NULL, 4);
+INSERT INTO `images` VALUES (5, '0/4.jpg', NULL, 5);
+INSERT INTO `images` VALUES (6, '0/5.jpg', NULL, 6);
+INSERT INTO `images` VALUES (7, '3/0.jpg', NULL, 7);
+INSERT INTO `images` VALUES (8, '3/1.jpg', NULL, 8);
+INSERT INTO `images` VALUES (9, '3/2.jpg', NULL, 9);
+INSERT INTO `images` VALUES (10, '3/3.jpg', NULL, 10);
+
+SET FOREIGN_KEY_CHECKS = 1;

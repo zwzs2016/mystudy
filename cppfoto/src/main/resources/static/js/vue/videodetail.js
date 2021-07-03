@@ -9,6 +9,7 @@ let vm_detailn=new Vue({
             if (response.data){
                 vm_detailn.video=response.data;
                 $("#title").text(vm_detailn.video.title+'视频');
+                $("#buy").attr('href',"videoorder.html?id="+vm_detailn.video.id)
             }
         })
     }
