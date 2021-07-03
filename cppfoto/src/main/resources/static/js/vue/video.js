@@ -4,7 +4,8 @@ let vm_video=new Vue({
       category_arr:[],
       images_arr:[],
       video_arr:[],
-      pageinfo:{}
+      pageinfo:{},
+      categoryname:''
     },
     methods:{
         videopages(pageNum){
@@ -32,5 +33,7 @@ let vm_video=new Vue({
                 vm_video.pageinfo=res.data;
             }
         })
+        //改变categoryname
+        vm_video.categoryname=location.s
     }
 })

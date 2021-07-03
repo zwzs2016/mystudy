@@ -17,10 +17,10 @@
 <div class="nav fl">
 	<ul>
 		<li><a href="/" hidefocus="hidefocus">首页</a></li>
-		<li style="display:none;"><a href="/mall/" hidefocus="hidefocus">电商</a></li>
-		     <li><a href="/view/" hidefocus="hidefocus">看点</a></li>
-		<li><a href="/info/" hidefocus="hidefocus">圈子</a></li>
-		<li class="cur"><a href="/video/" hidefocus="hidefocus">视听</a></li>
+		<li style="display:none;"><a href="/mall.html" hidefocus="hidefocus">电商</a></li>
+		     <li><a href="/view.html" hidefocus="hidefocus">看点</a></li>
+		<li><a href="/info.html" hidefocus="hidefocus">圈子</a></li>
+		<li class="cur"><a href="/video.html" hidefocus="hidefocus">视听</a></li>
 
 		
 	</ul>
@@ -43,7 +43,7 @@
 </div>
 <div class="content-con">
     <ul class="clearfix">
-    <li class="category-1 category-name"><span><a href="/video/list.html?category=1" hidefocus="hidefocus">小九来了</a></span></li>
+    <li class="category-1 category-name"><span><a href="/video/list.html?category=1" hidefocus="hidefocus" v-text="categoryname">小九来了</a></span></li>
     
     <li class="data" v-for="v in video_arr">
 		<a  href="/video/detail.html?id=178" target="_blank" hidefocus="hidefocus">

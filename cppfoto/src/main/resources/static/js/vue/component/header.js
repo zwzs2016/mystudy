@@ -15,7 +15,6 @@ Vue.component("myheader",{
     <li><a href="/view.html" hidefocus="hidefocus">看点</a></li>
     <li class="cur"><a href="/info.html" hidefocus="hidefocus">圈子</a></li>
     <li><a href="/video.html" hidefocus="hidefocus">视听</a></li>
-    <li><a href="#" target="_blank" hidefocus="hidefocus">订报</a></li>
     </ul>
     </div>
     <div class="search fl">
