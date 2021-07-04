@@ -215,7 +215,10 @@
 
     $(".username").blur(function () {
     	if(this.value){
-			axios.get("/check?username="+this.value).then(function (response) {
+    		let value=this.value;
+			axios.post("/check",{
+				username:value
+			}).then(function (response) {
 				console.log(response.data)
 				if(response.data==1){
 					$(".username").next().text("用户已存在!");

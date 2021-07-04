@@ -46,7 +46,7 @@
     <li class="category-1 category-name"><span><a href="/video/list.html?category=1" hidefocus="hidefocus" v-text="categoryname">小九来了</a></span></li>
     
     <li class="data" v-for="v in video_arr">
-		<a  href="/video/detail.html?id=178" target="_blank" hidefocus="hidefocus">
+		<a  :href="'/videodetail.html?id='+v.id" target="_blank" hidefocus="hidefocus">
 			<img :src="'video_files/images/'+v.imgurl" alt="" >
 			<div class="shadow" style="display: none;">
 				<span class="bg"></span>
@@ -143,4 +143,6 @@ var _hmt = _hmt || [];
 <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src="/js/vue/video.js"></script>
+<script src="/js/comm.js"></script>
+
 <div id="hm_t_undefined" class="hm-t-container"><div class="hm-t-go-top" style="display: none;"></div></div></body></html>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.tedu.cppfoto.mapper.VideoMapper">
+    <select id="select" resultType="cn.tedu.cppfoto.entity.Video">
+        select v.id,v.title,v.content,v.pay,i.imgurl,v.categoryId from video v join images i on v.id=i.videoId
+        <where>
+            <if test="categoryId!=null">
+               and v.categoryId=#{categoryId}
+            </if>
+            <if test="id!=null">
+               and v.id=#{id}
+            </if>
+        </where>
+    </select>
+
+    <select id="selectVideoVos" resultType="cn.tedu.cppfoto.Vo.VideoVo">
+        SELECT o.id,
+               o.createDate,
+               o.paystatus,
+               v.id as videoId,
+               v.title,
+               i.imgurl
+               <if test="type=='words'">
+                  ,w.id as wordsId,
+                   w.contents,
+                   w.createDate as wordsCreateDate
+               </if>
+        from `order` o JOIN video v
+            JOIN images i
+            <if test="type=='words'">
+                JOIN words w
+            </if>
+                on o.videoId=v.id
+                       and i.videoId=v.id
+                       <if test="type=='words'">
+                           and w.videoId=v.id
+                       </if>
+        <where>
+            <if test="userId!=null">
+               and o.userId=#{userId}
+            </if>
+            <if test="type=='pay'">
+                and o.paystatus=1
+            </if>
+            <if test="type=='collection'">
+                and o.isCollection=1
+            </if>
+        </where>
+    </select>
+</mapper>

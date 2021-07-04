@@ -34,6 +34,6 @@ let vm_video=new Vue({
             }
         })
         //改变categoryname
-        vm_video.categoryname=location.s
+        //vm_video.categoryname=location.s
     }
 })

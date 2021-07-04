@@ -1,0 +1,41 @@
+﻿function comment_delete(id) {
+    $.post('../handlers/videocomment.ashx', { act: 'delete', comment: id },
+        function (result) {
+            if (result == 'success') location.reload();
+            else alert('\u64cd\u4f5c\u5931\u8d25');
+        });
+}
+function favorite_delete(id) {
+    $.post('../handlers/video.ashx', { act: 'favorite_delete', id: id },
+    function (result) {
+        if (result == 'success') location.reload();
+        else alert('\u64cd\u4f5c\u5931\u8d25')
+    });
+}
+(function (a) {
+    a.face = {
+        domain: 'http://main.chinaphotopress.com/face/',
+        tags: ('微笑,撇嘴,色,发呆,得意,流泪,害羞,闭嘴,睡,大哭,尴尬,发怒,调皮,呲牙,惊讶,难过,酷,冷汗,抓狂,吐,偷笑,可爱,白眼,傲慢,饥饿,困,惊恐,流汗,憨笑,大兵,奋斗,咒骂,疑问,嘘,晕,疯了,衰,骷髅,敲打,再见,擦汗,抠鼻,鼓掌,糗大了,坏笑,左哼哼,右哼哼,哈欠,鄙视,委屈,快哭了,阴险,亲亲,吓,可怜,强,弱,握手,胜利,抱拳,勾引,拳头,差劲,爱你,NO,OK,猪头,玫瑰,凋谢,拥抱,示爱,爱心,心碎,刀,菜刀,炸弹,手枪,药,啤酒,咖啡,饭,下面,香蕉,西瓜,便便,蛋糕,足球,篮球,乒乓,发财,K歌,帅,月亮,太阳,多云,下雨,闪电,打伞,礼物,购物,邮件,钻戒,棒棒糖,喝奶,钞票,彩球,喝彩,风车,纸巾,祈祷,灯泡,闹钟,沙发,双喜,鞭炮,灯笼,爆筋,青蛙,招财猫,熊猫,瓢虫,飞机,开车,左车头,车厢,右车头').split(','),
+        load: function (container) {
+            var faces = '';
+            for (var i = 0; i < this.tags.length; i++) {
+                faces += '<img src="' + this.domain + i + '.png" title="[' + this.tags[i] + ']" />';
+            }
+            container.html(faces);
+        },
+        show: function (container) {
+            var cont = container.html();
+            for (var i = 0; i < this.tags.length; i++) {
+                while (cont.indexOf('[' + this.tags[i] + ']') > 0) {
+                    cont = cont.replace('[' + this.tags[i] + ']', '<img src="' + this.domain + i + '.png" title="' + this.tags[i] + '" align="absmiddle" />')
+                }
+            }
+            container.html(cont);
+        }
+    }
+})(jQuery);
+$(document).ready(function () {
+    $(".my-comments .con-1").each(function () {
+        $.face.show($(this));
+    });
+});

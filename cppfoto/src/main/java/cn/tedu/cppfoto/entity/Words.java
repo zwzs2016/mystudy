@@ -13,4 +13,5 @@ public class Words {
     private Integer articleId;
     private Date createDate;
     private Integer userId;
+    private Integer videoId;
 }
