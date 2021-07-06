@@ -50,8 +50,6 @@ let vm_detail=new Vue({
                     if (response.data==1){
                         alert('发布成功!');
                         location.reload();
-                    }else if(response.data==0){
-                        alert('已经收藏过了!')
                     } else {
                         alert('您还未登录!');
                         location.href='/login.html';

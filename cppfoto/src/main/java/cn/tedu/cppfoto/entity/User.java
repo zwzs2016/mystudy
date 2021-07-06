@@ -12,7 +12,7 @@ public class User {
     private String password;
     private String mail;
     private String name;
-    private char sex;
+    private Character sex;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date birthday;
     private String fixedPhone;

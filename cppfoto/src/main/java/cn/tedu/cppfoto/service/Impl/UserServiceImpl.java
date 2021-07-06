@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
@@ -96,6 +97,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional
     public void update(User user) {
         uMapper.update(user);
         //更新Redis
@@ -108,6 +110,21 @@ public class UserServiceImpl implements UserService {
             e.printStackTrace();
         }
 
+    }
+
+    @Override
+    public User check(User user) {
+        return uMapper.check(user);
+    }
+
+    @Override
+    public void insert(User user) {
+        uMapper.insert(user);
+    }
+
+    @Override
+    public User selectById(int id) {
+        return uMapper.selectById(id);
     }
 
 }

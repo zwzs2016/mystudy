@@ -23,7 +23,7 @@
                     JOIN article a  JOIN images i on w.articleId=a.id and a.id=i.articleId
                 </when>
                 <otherwise>
-                    JOIN `user` u JOIN images i on w.userId=u.id and u.imagesId=i.id
+                    left JOIN `user` u on w.userId=u.id left JOIN images i on u.imagesId=i.id
                 </otherwise>
             </choose>
         <where>

@@ -16,9 +16,6 @@ public class UserController {
     @Autowired
     UserService userService;
 
-    @Autowired(required = false)
-    UserMapper uMapper;
-
     @PostMapping("/check")
     public int check(@RequestBody User user, HttpSession session){
         User u=(User) session.getAttribute("user");
@@ -26,7 +23,7 @@ public class UserController {
             user.setId(u.getId());
         }
         System.out.println("user = " + user);
-        if(uMapper.check(user)!=null){
+        if(userService.check(user)!=null){
             return 1;//存在
         }
         return  0;//不存在
@@ -34,8 +31,8 @@ public class UserController {
     @RequestMapping("/reg")
     public int register(User user){
         System.out.println("user = " + user);
-        if(uMapper.check(user)==null){
-            uMapper.insert(user);
+        if(userService.check(user)==null){
+            userService.insert(user);
             userService.register(user);
             return 1;
         }
@@ -44,7 +41,7 @@ public class UserController {
 
     @RequestMapping("/login")
     public int login(User user, HttpSession session){
-        User u=uMapper.check(user);
+        User u=userService.check(user);
         if (u!=null){
             if(u.getPassword().equals(user.getPassword())){
                 //密码一致
@@ -63,6 +60,7 @@ public class UserController {
 
     @RequestMapping("/islogin")
     public User islogin(HttpSession session){
+        User user=(User) session.getAttribute("user");
         return (User) session.getAttribute("user");
     }
 
@@ -74,7 +72,6 @@ public class UserController {
     @RequestMapping("/profile")
     public User profile(HttpSession session){
         User user=(User)session.getAttribute("user");
-
         if(user!=null){
             return userService.getUser(user);
             //return uMapper.check(user);
@@ -94,7 +91,7 @@ public class UserController {
 
     @RequestMapping("/selectuserbyid")
     public User selectUserById(int id){
-        return uMapper.selectById(id);
+        return userService.selectById(id);
     }
 
     @RequestMapping("/usersafe")
@@ -103,7 +100,7 @@ public class UserController {
         if(u!=null){
             user.setId(u.getId());
             System.out.println("user = " + user);
-            uMapper.update(user);
+            userService.update(user);
             session.removeAttribute("user");
             return 1;
         }

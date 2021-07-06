@@ -13,4 +13,11 @@ public interface UserService {
     User getUser(User user);
 
     void update(User user);
+
+    User check(User user);
+
+    void insert(User user);
+
+    User selectById(int id);
+
 }

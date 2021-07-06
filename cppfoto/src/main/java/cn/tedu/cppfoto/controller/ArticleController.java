@@ -8,6 +8,7 @@ import cn.tedu.cppfoto.entity.Images;
 import cn.tedu.cppfoto.entity.User;
 import cn.tedu.cppfoto.mapper.ArticleMapper;
 import cn.tedu.cppfoto.mapper.UserMapper;
+import cn.tedu.cppfoto.service.ArticleService;
 import cn.tedu.cppfoto.utils.UploadFile;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,21 +25,18 @@ import java.util.List;
 @RestController
 @RequestMapping("/article")
 public class ArticleController {
-    @Autowired(required = false)
-    ArticleMapper aMapper;
+    @Autowired
+    ArticleService articleService;
 
     @Autowired
     UploadFile uploadFile;
-
-    @Autowired(required = false)
-    UserMapper uMapper;
 
     @Autowired
     Info info;
 
     @RequestMapping
     public List<Article> Article(){
-        return aMapper.selctAll();
+        return articleService.selctAll();
     }
 
     @RequestMapping("/add")
@@ -48,8 +46,7 @@ public class ArticleController {
         article.setCreateDate(new Date());
         article.setUserId(user.getId());
         article.setImagesNum(files.length);
-        aMapper.insert(article);
-        System.out.println(article);
+        articleService.insert(article);
         for (int i=0;i<files.length;i++){
             uploadFile.saveImg(files[i],article);
         }
@@ -59,30 +56,30 @@ public class ArticleController {
         User user=(User) session.getAttribute("user");
         System.out.println(user);
         if(user!=null){
-            return aMapper.selectById(user.getId());
+            return articleService.selectById(user.getId());
         }
         return null;
     }
     @RequestMapping("/deletebyid")
     public void deleteById(int id){
-        aMapper.deleteById(id);
+        articleService.deleteById(id);
     }
 
     @RequestMapping("/info")
     public List<InfoVo> info(Info info){
         System.out.println("info = " + info);
-        return aMapper.selctInfoAll(info);
+        return articleService.selctInfoAll(info);
     }
 
     @RequestMapping("/detail")
     public Article selectById(int id){
-        return aMapper.select(id);
+        return articleService.select(id);
     }
     @RequestMapping("/heart")
     public int heart(int id,HttpSession session){
         if(session.getAttribute("heart")==null){
             session.setAttribute("heart","heart");
-            aMapper.heart(id);
+            articleService.heart(id);
             return 1;
         }
         return 0;

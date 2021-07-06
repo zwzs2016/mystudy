@@ -11,7 +11,7 @@ import java.util.List;
 
 @Mapper
 public interface WordsMapper {
-    @Insert("insert into words values(null,#{contents},#{articleId},#{createDate},#{userId},0)")
+    @Insert("insert into words values(null,#{contents},#{articleId},#{createDate},#{userId},0,#{videoId})")
     void insert(Words words);
 
     List<WordsVo> select(Integer userId,Integer articleId);

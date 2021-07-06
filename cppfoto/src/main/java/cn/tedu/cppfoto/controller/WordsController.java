@@ -5,6 +5,7 @@ import cn.tedu.cppfoto.Vo.WordsVo;
 import cn.tedu.cppfoto.entity.User;
 import cn.tedu.cppfoto.entity.Words;
 import cn.tedu.cppfoto.mapper.WordsMapper;
+import cn.tedu.cppfoto.service.WordsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,8 +15,8 @@ import java.util.List;
 @RestController
 @RequestMapping("/words")
 public class WordsController {
-    @Autowired(required = false)
-    WordsMapper wMapper;
+    @Autowired
+    WordsService wordsService;
 
     @PostMapping("/add")
     public int insert(@RequestBody Words words, HttpSession session){
@@ -26,7 +27,7 @@ public class WordsController {
         }
         words.setUserId(user.getId());
         System.out.println(words);
-        wMapper.insert(words);
+        wordsService.insert(words);
         return 1;
     }
 
@@ -34,7 +35,7 @@ public class WordsController {
     public List<WordsVo> select(HttpSession session){
         User user=(User) session.getAttribute("user");
         if(user!=null){
-            return wMapper.select(user.getId(),null);
+            return wordsService.select(user.getId(),null);
         }
         return null;
     }
@@ -42,7 +43,7 @@ public class WordsController {
     @GetMapping("/selectbyarticleid")
     public List<WordsVo> selectByArticleId(int id, HttpSession session){
         if(session.getAttribute("user")!=null){
-            return wMapper.select(null,id);
+            return wordsService.select(null,id);
         }
         return null;
     }
@@ -50,7 +51,7 @@ public class WordsController {
     @GetMapping("/delwords")
     public void delWords(int id,HttpSession session){
         if(session.getAttribute("user")!=null){
-            wMapper.deleteById(id);
+            wordsService.deleteById(id);
         }
     }
 }

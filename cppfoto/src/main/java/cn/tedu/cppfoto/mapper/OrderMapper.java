@@ -7,7 +7,7 @@ import java.util.List;
 
 @Mapper
 public interface OrderMapper {
-    @Insert("insert into `order` values(null,#{paystatus},#{isCollection},#{wordsId},#{userId},#{videoId})")
+    @Insert("insert into `order` values(null,#{paystatus},#{isCollection},#{userId},#{videoId},#{createDate})")
     void insert(Order order);
 
     @Select("select * from `order` where userId=#{userId} and videoId=#{videoId}")

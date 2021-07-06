@@ -7,4 +7,5 @@ public class Images {
     private Integer id;
     private String imgUrl;
     private Integer articleId;//分类id
+    private Integer videoId;//分类id
 }

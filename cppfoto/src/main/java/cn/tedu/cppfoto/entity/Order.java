@@ -13,7 +13,6 @@ public class Order {
     private Integer id;
     private Integer paystatus;
     private Integer isCollection;
-    private Integer wordsId;
     private Integer userId;
     private Integer videoId;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone="GMT+8")

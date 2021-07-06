@@ -11,7 +11,7 @@ import java.util.List;
 @Mapper
 public interface ImagesMapper {
 
-    @Insert("insert into images values(null,#{imgUrl},#{articleId})")
+    @Insert("insert into images values(null,#{imgUrl},#{articleId},#{videoId})")
     @Options(useGeneratedKeys = true, keyProperty = "id",keyColumn = "id")
     int insert(Images images);
 
