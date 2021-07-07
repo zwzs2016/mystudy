@@ -5,6 +5,7 @@ import cn.tedu.cppfoto.entity.Images;
 import cn.tedu.cppfoto.entity.User;
 import cn.tedu.cppfoto.mapper.ImagesMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -16,6 +17,9 @@ import java.util.UUID;
 
 @Component
 public class UploadFile {
+    @Value("${cppfoto.resource.path}")
+    private String filePath;
+
     @Autowired(required = false)
     ImagesMapper iMapper;
     public Integer saveImg(MultipartFile file, Article article){
@@ -25,7 +29,7 @@ public class UploadFile {
         SimpleDateFormat f=new SimpleDateFormat("yyyy/MM/dd/");
         Date date=new Date();
         String datePath=f.format(date);
-        String path="D:/upload/"+datePath;
+        String path=filePath+datePath;
         File dirFile=new File(path);
         if(!dirFile.exists()){
             dirFile.mkdirs();

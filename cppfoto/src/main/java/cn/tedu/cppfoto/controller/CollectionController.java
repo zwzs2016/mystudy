@@ -5,6 +5,8 @@ import cn.tedu.cppfoto.entity.Collection;
 import cn.tedu.cppfoto.entity.User;
 import cn.tedu.cppfoto.mapper.ArticleMapper;
 import cn.tedu.cppfoto.mapper.CollectionMapper;
+import cn.tedu.cppfoto.service.ArticleService;
+import cn.tedu.cppfoto.service.CollectionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,15 +20,16 @@ import java.util.List;
 @RequestMapping("/collection")
 public class CollectionController {
     @Autowired(required = false)
-    CollectionMapper cMapper;
+    CollectionService collectionService;
+
     @Autowired(required = false)
-    ArticleMapper aMapper;
+    ArticleService articleService;
 
     @GetMapping
     public List<CollectionVo> collection(HttpSession session){
         User user=(User) session.getAttribute("user");
         if (user!=null){
-           return cMapper.select(user.getId());
+           return collectionService.select(user.getId());
         }
         return null;
     }
@@ -41,9 +44,9 @@ public class CollectionController {
             Collection collection=new Collection();
             collection.setArticleId(articleId);
             collection.setUserId(user.getId());
-            if(cMapper.isCollection(collection)==null){
-                cMapper.insert(collection);
-                aMapper.favorite(articleId);
+            if(collectionService.isCollection(collection)==null){
+                collectionService.insert(collection);
+                articleService.favorite(articleId);
                 return 1;
             }
         }
@@ -53,7 +56,7 @@ public class CollectionController {
     @GetMapping("/deletebyid")
     public void deletebyid(int id,HttpSession session){
         if(session.getAttribute("user")!=null){
-            cMapper.deleteById(id);
+            collectionService.deleteById(id);
         }
     }
 }

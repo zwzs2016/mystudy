@@ -31,14 +31,12 @@ public class ArticleController {
     @Autowired
     UploadFile uploadFile;
 
-    @Autowired
-    Info info;
-
     @RequestMapping
     public List<Article> Article(){
         return articleService.selctAll();
     }
 
+    //文章添加
     @RequestMapping("/add")
     public void add(Article article, MultipartFile file, MultipartFile[] files, HttpSession session){
         System.out.println("article = " + article + ", file = " + file + ", files = " + Arrays.deepToString(files) + ", session = " + session);

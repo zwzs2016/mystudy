@@ -1,5 +1,6 @@
 package cn.tedu.cppfoto.controller;
 
+import cn.tedu.cppfoto.entity.Article;
 import cn.tedu.cppfoto.entity.Images;
 import cn.tedu.cppfoto.entity.User;
 import cn.tedu.cppfoto.mapper.ImagesMapper;
@@ -8,6 +9,7 @@ import cn.tedu.cppfoto.service.Imageservice;
 import cn.tedu.cppfoto.service.UserService;
 import cn.tedu.cppfoto.utils.UploadFile;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
@@ -31,32 +33,16 @@ public class ImagesController {
     @Autowired
     UploadFile uploadFile;
 
+    //用户头像更换
     @RequestMapping("/portrait")
     public void portrait(MultipartFile file,HttpSession session){
         User user=(User)session.getAttribute("user");
-        String fileName=file.getOriginalFilename();
-        String suffix=fileName.substring(fileName.lastIndexOf("."));
-        fileName= UUID.randomUUID()+suffix;
-        SimpleDateFormat f=new SimpleDateFormat("yyyy/MM/dd/");
-        Date date=new Date();
-        String datePath=f.format(date);
-        String path="D:/upload/"+datePath;
-        File dirFile=new File(path);
-        if(!dirFile.exists()){
-            dirFile.mkdirs();
-        }
-        try {
-            file.transferTo(new File(path+fileName));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        Images images = new Images();
-        images.setImgUrl("/"+datePath+fileName);
-        imageservice.insert(images);
-        user.setImagesId(images.getId());
+        Integer imagesId = uploadFile.saveImg(file, new Article());
+        user.setImagesId(imagesId);
         userService.update(user);
     }
 
+    //用户头像查询
     @RequestMapping("/portrait/selectimg")
     public Images selectimg(HttpSession session){
         User user=(User)session.getAttribute("user");

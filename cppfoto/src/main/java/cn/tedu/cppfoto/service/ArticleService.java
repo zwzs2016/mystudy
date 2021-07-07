@@ -21,4 +21,6 @@ public interface ArticleService {
     void heart(int id);
 
     List<Article> selctAll();
+
+    void favorite(int id);
 }

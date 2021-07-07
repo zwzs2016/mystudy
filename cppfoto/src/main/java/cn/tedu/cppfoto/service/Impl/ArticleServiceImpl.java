@@ -55,4 +55,9 @@ public class ArticleServiceImpl implements ArticleService {
     public List<Article> selctAll() {
         return articleMapper.selctAll();
     }
+
+    @Override
+    public void favorite(int id) {
+        articleMapper.favorite(id);
+    }
 }
