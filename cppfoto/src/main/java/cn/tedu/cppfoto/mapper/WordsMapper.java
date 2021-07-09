@@ -18,4 +18,7 @@ public interface WordsMapper {
 
     @Delete("delete from words where id=#{id}")
     void deleteById(int id);
+
+    @Delete("delete from words where articleId=#{id}")
+    int deleteByArticleId(int id);
 }

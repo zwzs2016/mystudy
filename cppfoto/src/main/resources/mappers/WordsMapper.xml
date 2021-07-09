@@ -7,6 +7,7 @@
                w.contents,
                <choose>
                    <when test="articleId!=null">
+                       u.id as userId,
                        u.username,
                    </when>
                <otherwise>

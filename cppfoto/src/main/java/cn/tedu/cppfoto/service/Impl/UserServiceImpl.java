@@ -118,6 +118,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional
     public void insert(User user) {
         uMapper.insert(user);
     }

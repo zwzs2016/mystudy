@@ -10,6 +10,7 @@ public class WordsVo {
     private Integer id;
     private String contents;
     private String title;
+    private Integer userId;
     private String username;
     private Integer articleId;
     private String imgUrl;

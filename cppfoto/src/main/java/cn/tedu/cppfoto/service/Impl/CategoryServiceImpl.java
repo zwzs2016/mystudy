@@ -17,14 +17,17 @@ public class CategoryServiceImpl implements CategoryService {
     @Autowired(required = false)
     CategoryMapper cMapper;
 
-    //private List<Category> categories=new CopyOnWriteArrayList<>();
-
     private Map<String,List<Category>> categories=new ConcurrentHashMap<>();
 
     @Override
     public List<Category> select(String directory) {
         if(!categories.containsKey(directory)){
-            categories.put(directory,cMapper.select(directory));
+            synchronized (categories){
+                if(!categories.containsKey(directory)){
+                    categories.put(directory,cMapper.select(directory));
+                }
+            }
+
         }
         List<Category> categorieList = categories.get(directory);
         return categorieList;

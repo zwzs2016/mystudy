@@ -12,13 +12,13 @@ import java.util.List;
 public interface ArticleMapper {
     @Insert("insert into article values(null,#{title},#{content},#{createDate},#{likeCount},#{collectionNum},#{categoryId},#{imagesNum},#{userId},#{source},#{status})")
     @Options(useGeneratedKeys = true, keyProperty = "id",keyColumn = "id")
-    void insert(Article article);
+    int insert(Article article);
 
     @Select("SELECT a.*,i.imgurl from article a JOIN images i on a.id=i.articleId  WHERE a.userId=#{id} GROUP BY a.id")
     List<ArticleVo> selectById(int id);
 
     @Delete("delete from article where id=#{id}")
-    void deleteById(int id);
+    int deleteById(int id);
 
     @Select("select * from article")
     List<Article> selctAll();
@@ -29,8 +29,8 @@ public interface ArticleMapper {
     Article select(int id);
 
     @Update("update article set likeCount=likeCount+1  where id=#{id}")
-    void heart(int id);
+    int heart(int id);
 
     @Update("update article set collectionNum=collectionNum+1 where id=#{id}")
-    void favorite(int id);
+    int favorite(int id);
 }

@@ -18,5 +18,5 @@ public interface MessageMapper {
     void deleteById(int id);
 
     @Insert("insert into message values(null,#{content},#{fromuserId},#{userId})")
-    void insert(Message message);
+    int insert(Message message);
 }

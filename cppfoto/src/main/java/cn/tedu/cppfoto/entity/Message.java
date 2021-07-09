@@ -1,8 +1,10 @@
 package cn.tedu.cppfoto.entity;
 
 import lombok.Data;
+import lombok.experimental.Accessors;
 
 @Data
+@Accessors(chain = true)
 public class Message {
     private Integer id;
     private String content;

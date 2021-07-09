@@ -6,7 +6,9 @@ let vm_detail=new Vue({
             images_user:{},
             user:{},
             words_arr:[],
-            photo_show:''
+            photo_show:'',
+            contents:'',
+            reply:false
         },
         methods:{
             imgesset(i){
@@ -55,6 +57,24 @@ let vm_detail=new Vue({
                         location.href='/login.html';
                     }
                 })
+            },
+            replystatus(){
+                this.reply=this.reply==false?true:false;
+            },
+            replycommit(id,replyuserId){
+                //获取words留言id,回复用户Id,回复内容
+                let data={
+                    id:id,
+                    articleId: location.search.split("=")[1],
+                    replyuserId:replyuserId,
+                    contents:vm_detail.contents,
+                    createDate:new Date()
+                }
+                axios.post("/words/add",data).then(function (response) {
+                    alert('回复成功!');
+                    location.reload();
+                })
+
             }
         },
         created(){

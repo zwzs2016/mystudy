@@ -134,6 +134,11 @@ glyphicon glyphicon-share"></span>
 			<span v-text="words.username"></span>
 			<span v-text="words.createDate"></span>：
 			<span v-text="words.contents"></span>
+			<span><a href="#" @click.prevent="replystatus">回复</a></span>
+			<div v-if="reply">
+				<textarea id="comment_reply" cols="30" rows="5" placeholder="文明上网，理性发言" class="clearfix" v-model="contents"></textarea>
+				<button @click="replycommit(words.id,words.userId)">提交</button>
+			</div>
 			<hr>
 		</div>
     </div>

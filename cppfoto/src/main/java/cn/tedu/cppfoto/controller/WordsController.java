@@ -1,10 +1,8 @@
 package cn.tedu.cppfoto.controller;
 
-import cn.tedu.cppfoto.Vo.CollectionVo;
 import cn.tedu.cppfoto.Vo.WordsVo;
 import cn.tedu.cppfoto.entity.User;
 import cn.tedu.cppfoto.entity.Words;
-import cn.tedu.cppfoto.mapper.WordsMapper;
 import cn.tedu.cppfoto.service.WordsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

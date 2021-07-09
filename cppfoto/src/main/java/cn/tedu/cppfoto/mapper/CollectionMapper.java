@@ -12,13 +12,13 @@ import java.util.List;
 @Mapper
 public interface CollectionMapper {
     @Insert("insert into collection values(null,#{articleId},#{userId})")
-    void insert(Collection collection);
+    int insert(Collection collection);
 
     @Select("select id from collection where articleId=#{articleId} and userId=#{userId}")
     Integer isCollection(Collection collection);
 
     @Delete("delete from collection where id=#{id}")
-    void deleteById(int id);
+    int deleteById(int id);
 
     @Select("select c.id,a.title,i.imgurl,a.id as articleId from collection c JOIN article a JOIN images i on c.articleId=a.id and a.id=i.articleId where c.userId=#{userId}")
     List<CollectionVo> select(int userId);
